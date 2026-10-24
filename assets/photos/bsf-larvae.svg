@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" fill="none">
+  <!-- Subtle organic background -->
+  <rect width="600" height="400" rx="12" fill="#14231A"/>
+  <rect width="600" height="400" rx="12" stroke="#2D6A4F" stroke-width="2"/>
+  
+  <!-- Substrate layer background -->
+  <path d="M 40 320 Q 150 280 300 310 T 560 300 L 560 360 L 40 360 Z" fill="#1C3024" opacity="0.8"/>
+  <path d="M 40 340 Q 200 310 400 330 T 560 325 L 560 360 L 40 360 Z" fill="#24392C" opacity="0.6"/>
+
+  <!-- Stylized BSF Larvae (Hermetia illucens) -->
+  <!-- Larva 1 (Main center) -->
+  <g transform="translate(300, 210) rotate(-12)">
+    <!-- Segmented Larva Body -->
+    <ellipse cx="0" cy="0" rx="90" ry="26" fill="#3D5A45" stroke="#5ECA95" stroke-width="2.5"/>
+    <!-- Segments -->
+    <path d="M -60 -20 Q -55 0 -60 20" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M -40 -24 Q -35 0 -40 24" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M -20 -25 Q -15 0 -20 25" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M 0 -26 Q 5 0 0 26" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M 20 -25 Q 25 0 20 25" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M 40 -24 Q 45 0 40 24" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M 60 -20 Q 65 0 60 20" stroke="#74D4A7" stroke-width="2"/>
+    <!-- Head segment -->
+    <path d="M 80 -12 C 96 -8 96 8 80 12 Z" fill="#2D6A4F" stroke="#5ECA95" stroke-width="2"/>
+  </g>
+
+  <!-- Larva 2 (Left lower) -->
+  <g transform="translate(180, 260) rotate(18)">
+    <ellipse cx="0" cy="0" rx="70" ry="20" fill="#2D4836" stroke="#48B07D" stroke-width="2"/>
+    <path d="M -45 -16 Q -40 0 -45 16" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M -25 -19 Q -20 0 -25 19" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M 0 -20 Q 5 0 0 20" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M 25 -19 Q 30 0 25 19" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M 45 -16 Q 50 0 45 16" stroke="#5ECA95" stroke-width="1.5"/>
+  </g>
+
+  <!-- Larva 3 (Right upper) -->
+  <g transform="translate(420, 180) rotate(-28)">
+    <ellipse cx="0" cy="0" rx="65" ry="18" fill="#2D4836" stroke="#48B07D" stroke-width="2"/>
+    <path d="M -40 -15 Q -35 0 -40 15" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M -20 -17 Q -15 0 -20 17" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M 0 -18 Q 5 0 0 18" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M 20 -17 Q 25 0 20 17" stroke="#5ECA95" stroke-width="1.5"/>
+    <path d="M 40 -15 Q 45 0 40 15" stroke="#5ECA95" stroke-width="1.5"/>
+  </g>
+
+  <!-- Organic particles / feed texture -->
+  <circle cx="120" cy="200" r="4" fill="#9A5B00" opacity="0.6"/>
+  <circle cx="240" cy="140" r="3" fill="#F4A236" opacity="0.7"/>
+  <circle cx="480" cy="250" r="5" fill="#9A5B00" opacity="0.5"/>
+  <circle cx="360" cy="300" r="3.5" fill="#5ECA95" opacity="0.6"/>
+  
+  <!-- Badge in top right corner indicating photo placeholder -->
+  <rect x="390" y="24" width="185" height="30" rx="6" fill="#1C3024" stroke="#3A5745" stroke-width="1"/>
+  <text x="482" y="43" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#74D4A7">ПРЕПУПИ BSF</text>
+  
+  <text x="40" y="55" font-family="'Manrope', sans-serif" font-size="18" font-weight="700" fill="#EEF5F0">Личинки Hermetia illucens</text>
+  <text x="40" y="80" font-family="'Golos Text', sans-serif" font-size="13" fill="#A6BCAD">Фаза активної біоконверсії вологого субстрату</text>
+</svg>

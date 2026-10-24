@@ -84,7 +84,7 @@
        ======================================================================== -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <!-- Logo (Clean EcoFly without "Пілот") -->
+      <!-- Logo -->
       <a href="#hero" class="logo" aria-label="EcoFly — Головна сторінка">
         <div class="logo-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
@@ -106,11 +106,10 @@
         <a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a>
       </nav>
 
-      <!-- Header Controls: Theme, Language, CTA & Mobile Burger -->
+      <!-- Header Controls: Theme, Language, Mobile Burger -->
       <div class="header-actions">
-        <!-- Theme Toggle (Only Inline SVG, No Emoji) -->
+        <!-- Theme Toggle -->
         <button type="button" class="icon-btn" id="theme-toggle-btn" aria-label="Перемкнути тему оформлення (світла / темна)" data-i18n-aria="nav.theme_toggle_aria">
-          <!-- Sun SVG (visible in dark mode) -->
           <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -122,13 +121,12 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <!-- Moon SVG (visible in light mode) -->
           <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
 
-        <!-- Language Switcher (UA / EN) -->
+        <!-- Language Switcher -->
         <button type="button" class="lang-btn" id="lang-toggle-btn" aria-label="Змінити мову (Українська / English)" data-i18n-aria="nav.lang_toggle_aria">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="10"></circle>
@@ -150,10 +148,11 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu (Contains all sections) -->
+  <!-- Mobile Drawer Menu -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню навігації">
     <div class="mobile-nav-links">
       <a href="#how-it-works" class="mobile-nav-link" data-i18n="nav.how_it_works">Як це працює</a>
+      <a href="#photos" class="mobile-nav-link">Світлини BSF</a>
       <a href="#for-waste" class="mobile-nav-link" data-i18n="nav.for_waste">Для постачальників відходів</a>
       <a href="#for-buyers" class="mobile-nav-link" data-i18n="nav.for_buyers">Для покупців протеїну</a>
       <a href="#calculator" class="mobile-nav-link" data-i18n="nav.calculator">Калькулятор ефекту</a>
@@ -172,9 +171,9 @@
 
   <main id="main-content">
     <!-- ======================================================================
-         2. HERO SECTION
+         2. HERO SECTION (With Organic Fluid Backdrop)
          ====================================================================== -->
-    <section class="section hero-section" id="hero">
+    <section class="section section-primary hero-section" id="hero">
       <div class="container">
         <div class="hero-grid">
           <!-- Text & CTAs -->
@@ -192,14 +191,14 @@
               EcoFly переробляє вологі рослинні відходи харчових виробництв Києва за допомогою личинок чорної левової мухи (Hermetia illucens) для створення замкненого біологічного циклу без вивезення на сміттєзвалища.
             </p>
 
-            <!-- 3 Audience Ingress Buttons -->
+            <!-- 3 Audience Buttons -->
             <div class="hero-cta-group">
               <a href="#for-waste" class="btn btn-primary" data-i18n="hero.btn_waste">Я віддаю відходи</a>
               <a href="#for-buyers" class="btn btn-outline" data-i18n="hero.btn_buyers">Я купую протеїн</a>
               <a href="#contact" class="btn btn-amber" data-i18n="hero.btn_partner">Я партнер / інвестор</a>
             </div>
 
-            <!-- Scientific Facts Strip with Sources -->
+            <!-- Scientific Facts Strip -->
             <div class="fact-strip">
               <div class="fact-item">
                 <div class="fact-val" data-i18n="hero.fact1_val">15–20%</div>
@@ -221,150 +220,257 @@
             </div>
           </div>
 
-          <!-- Animated Closed-Loop SVG Diagram (Enlarged Spacing & Legible Labels) -->
-          <div class="hero-visual-card" aria-label="Схема замкненого циклу EcoFly">
-            <svg class="cycle-diagram-svg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagram-title diagram-desc">
-              <title id="diagram-title">Замкнений цикл переробки EcoFly</title>
-              <desc id="diagram-desc">Схема чотирьох етапів: органічні відходи потрапляють до личинок BSF, перетворюються на протеїн, жир і зоогумус, що повертається у ґрунт.</desc>
-
-              <!-- Central Circular Track -->
-              <circle cx="260" cy="260" r="165" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="6 6"/>
-
-              <!-- Flow Arcs with Pulses -->
-              <!-- Arc 1: Top (Waste) to Right (BSF Larvae) -->
-              <path class="flow-arrow-pulse" d="M 260 95 A 165 165 0 0 1 425 260" stroke="#2D6A4F" stroke-width="3.5" stroke-linecap="round"/>
-              <polygon points="421,252 429,264 433,250" fill="#2D6A4F"/>
-
-              <!-- Arc 2: Right (Larvae) to Bottom (Protein & Fat) -->
-              <path class="flow-arrow-pulse" d="M 425 260 A 165 165 0 0 1 260 425" stroke="#5ECA95" stroke-width="3.5" stroke-linecap="round"/>
-              <polygon points="268,421 256,429 270,433" fill="#5ECA95"/>
-
-              <!-- Arc 3: Bottom (Protein/Fat) to Left (Frass / Soil) -->
-              <path class="flow-arrow-pulse" d="M 260 425 A 165 165 0 0 1 95 260" stroke="#F4A236" stroke-width="3.5" stroke-linecap="round"/>
-              <polygon points="99,268 91,256 87,270" fill="#F4A236"/>
-
-              <!-- Arc 4: Left (Soil/Frass) to Top (New Agriculture) -->
-              <path class="flow-arrow-pulse" d="M 95 260 A 165 165 0 0 1 260 95" stroke="#9A5B00" stroke-width="3.5" stroke-linecap="round"/>
-              <polygon points="252,99 264,91 250,87" fill="#9A5B00"/>
-
-              <!-- Central Hub -->
-              <circle cx="260" cy="260" r="62" fill="var(--bg-surface-elevated)" stroke="var(--border-strong)" stroke-width="2"/>
-              <text x="260" y="252" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="16" fill="var(--brand-pine)" data-i18n="diagram.center_title">ECOFLY</text>
-              <text x="260" y="272" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" letter-spacing="0.05em" fill="var(--text-muted)" data-i18n="diagram.center_sub">ЗАМКНЕНИЙ ЦИКЛ</text>
-
-              <!-- Node 1: Top - Organic Waste (r=45 for ample padding) -->
-              <g transform="translate(260, 95)">
-                <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#2D6A4F" stroke-width="2"/>
-                <path d="M-8 -14 C-8 -20 8 -20 8 -14 C8 -3 -8 -3 -8 -14 Z" fill="#2D6A4F" opacity="0.85"/>
-                <text x="0" y="4" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.waste">ВІДХОДИ</text>
-                <text x="0" y="20" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.waste_sub">Дробина, макуха</text>
-              </g>
-
-              <!-- Node 2: Right - BSF Larvae -->
-              <g transform="translate(425, 260)">
-                <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#5ECA95" stroke-width="2"/>
-                <ellipse cx="0" cy="-12" rx="7" ry="10" fill="#5ECA95" opacity="0.85"/>
-                <text x="0" y="5" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.larvae">ЛИЧИНКИ</text>
-                <text x="0" y="21" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.larvae_sub">H. illucens</text>
-              </g>
-
-              <!-- Node 3: Bottom - Protein & Lipids -->
-              <g transform="translate(260, 425)">
-                <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#F4A236" stroke-width="2"/>
-                <circle cx="0" cy="-12" r="8" fill="#F4A236" opacity="0.85"/>
-                <text x="0" y="4" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.protein">ПРОТЕЇН</text>
-                <text x="0" y="20" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.protein_sub">Корми та жир</text>
-              </g>
-
-              <!-- Node 4: Left - Frass / Soil -->
-              <g transform="translate(95, 260)">
-                <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#9A5B00" stroke-width="2"/>
-                <path d="M-6 -15 L6 -15 L9 -5 L-9 -5 Z" fill="#9A5B00" opacity="0.85"/>
-                <text x="0" y="4" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.frass">ЗООГУМУС</text>
-                <text x="0" y="20" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.frass_sub">Фрас у ґрунт</text>
-              </g>
+          <!-- Hero Visual: Cycle Diagram with Organic Vector Backdrop -->
+          <div class="hero-visual-wrap">
+            <!-- Organic Fluid Shapes SVG Backdrop -->
+            <svg class="hero-organic-backdrop" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Gradient definitions -->
+              <defs>
+                <radialGradient id="organicBlob1" cx="40%" cy="40%" r="55%">
+                  <stop offset="0%" stop-color="#5ECA95" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#2D6A4F" stop-opacity="0.0"/>
+                </radialGradient>
+                <radialGradient id="organicBlob2" cx="60%" cy="60%" r="50%">
+                  <stop offset="0%" stop-color="#F4A236" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#9A5B00" stop-opacity="0.0"/>
+                </radialGradient>
+                <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#5ECA95" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#F4A236" stop-opacity="0.15"/>
+                </linearGradient>
+              </defs>
+              <!-- Layered Organic Blobs -->
+              <path d="M 430 180 C 520 250 510 390 420 470 C 330 550 190 520 120 440 C 50 360 70 230 150 150 C 230 70 340 110 430 180 Z" fill="url(#organicBlob1)"/>
+              <path d="M 460 320 C 520 420 390 530 290 510 C 190 490 120 410 150 310 C 180 210 280 170 380 200 C 480 230 400 220 460 320 Z" fill="url(#organicBlob2)"/>
+              <path d="M 120 220 Q 280 100 480 260 T 380 480 Q 180 500 120 220 Z" stroke="url(#curveGrad)" stroke-width="2" fill="none" opacity="0.6"/>
             </svg>
+
+            <!-- Cycle Diagram Card -->
+            <div class="hero-visual-card" aria-label="Схема замкненого циклу EcoFly">
+              <svg class="cycle-diagram-svg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagram-title diagram-desc">
+                <title id="diagram-title">Замкнений цикл переробки EcoFly</title>
+                <desc id="diagram-desc">Схема чотирьох етапів: органічні відходи потрапляють до личинок BSF, перетворюються на протеїн, жир і зоогумус, що повертається у ґрунт.</desc>
+
+                <!-- Central Circular Track -->
+                <circle cx="260" cy="260" r="165" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="6 6"/>
+
+                <!-- Flow Arcs with Pulses -->
+                <path class="flow-arrow-pulse" d="M 260 95 A 165 165 0 0 1 425 260" stroke="#2D6A4F" stroke-width="3.5" stroke-linecap="round"/>
+                <polygon points="421,252 429,264 433,250" fill="#2D6A4F"/>
+
+                <path class="flow-arrow-pulse" d="M 425 260 A 165 165 0 0 1 260 425" stroke="#5ECA95" stroke-width="3.5" stroke-linecap="round"/>
+                <polygon points="268,421 256,429 270,433" fill="#5ECA95"/>
+
+                <path class="flow-arrow-pulse" d="M 260 425 A 165 165 0 0 1 95 260" stroke="#F4A236" stroke-width="3.5" stroke-linecap="round"/>
+                <polygon points="99,268 91,256 87,270" fill="#F4A236"/>
+
+                <path class="flow-arrow-pulse" d="M 95 260 A 165 165 0 0 1 260 95" stroke="#9A5B00" stroke-width="3.5" stroke-linecap="round"/>
+                <polygon points="252,99 264,91 250,87" fill="#9A5B00"/>
+
+                <!-- Central Hub -->
+                <circle cx="260" cy="260" r="62" fill="var(--bg-surface-elevated)" stroke="var(--border-strong)" stroke-width="2"/>
+                <text x="260" y="252" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="16" fill="var(--brand-pine)" data-i18n="diagram.center_title">ECOFLY</text>
+                <text x="260" y="272" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" letter-spacing="0.05em" fill="var(--text-muted)" data-i18n="diagram.center_sub">ЗАМКНЕНИЙ ЦИКЛ</text>
+
+                <!-- Node 1: Top - Organic Waste (r=45 for ample padding) -->
+                <g transform="translate(260, 95)">
+                  <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#2D6A4F" stroke-width="2"/>
+                  <path d="M-8 -14 C-8 -20 8 -20 8 -14 C8 -3 -8 -3 -8 -14 Z" fill="#2D6A4F" opacity="0.85"/>
+                  <text x="0" y="4" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.waste">ВІДХОДИ</text>
+                  <text x="0" y="20" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.waste_sub">Дробина, макуха</text>
+                </g>
+
+                <!-- Node 2: Right - BSF Larvae -->
+                <g transform="translate(425, 260)">
+                  <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#5ECA95" stroke-width="2"/>
+                  <ellipse cx="0" cy="-12" rx="7" ry="10" fill="#5ECA95" opacity="0.85"/>
+                  <text x="0" y="5" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.larvae">ЛИЧИНКИ</text>
+                  <text x="0" y="21" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.larvae_sub">H. illucens</text>
+                </g>
+
+                <!-- Node 3: Bottom - Protein & Lipids -->
+                <g transform="translate(260, 425)">
+                  <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#F4A236" stroke-width="2"/>
+                  <circle cx="0" cy="-12" r="8" fill="#F4A236" opacity="0.85"/>
+                  <text x="0" y="4" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.protein">ПРОТЕЇН</text>
+                  <text x="0" y="20" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.protein_sub">Корми та жир</text>
+                </g>
+
+                <!-- Node 4: Left - Frass / Soil -->
+                <g transform="translate(95, 260)">
+                  <circle cx="0" cy="0" r="45" fill="var(--bg-surface)" stroke="#9A5B00" stroke-width="2"/>
+                  <path d="M-6 -15 L6 -15 L9 -5 L-9 -5 Z" fill="#9A5B00" opacity="0.85"/>
+                  <text x="0" y="4" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="700" font-size="11" fill="var(--text-primary)" data-i18n="diagram.frass">ЗООГУМУС</text>
+                  <text x="0" y="20" text-anchor="middle" font-size="9" fill="var(--text-muted)" data-i18n="diagram.frass_sub">Фрас у ґрунт</text>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         3. HOW IT WORKS (4 STEPS & COMPLIANCE WARNING)
+         3. HOW IT WORKS (With 4 Linear Vector Illustrations)
          ====================================================================== -->
-    <section class="section section-alt" id="how-it-works">
+    <section class="section section-surface" id="how-it-works">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="cycle.badge">4 кроки біоконверсії</div>
           <h2 class="section-title" data-i18n="cycle.title">Як працює замкнений цикл</h2>
           <p class="section-desc" data-i18n="cycle.desc">
-            Чисті рослинні залишки харчової промисловості за 12–14 діб перетворюються на корисні біоресурси для агросектору та міського озеленення.
+            Чисті рослинні залишки харчової промисловості за 12–14 діб перетворюються на корисні біоресурси.
           </p>
         </div>
 
         <div class="cycle-steps-grid">
-          <!-- Step 1 -->
+          <!-- Step 1: Collection -->
           <div class="step-card">
-            <div class="step-icon-wrap" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="1" y="3" width="15" height="13"></rect>
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            <div class="step-illustration-wrap" aria-hidden="true">
+              <!-- Linear Vector Illustration: Scheduled Collection & Sealed Container -->
+              <svg class="step-illustration-svg" viewBox="0 0 200 110" fill="none" stroke="currentColor">
+                <!-- Returnable food container -->
+                <rect x="25" y="35" width="65" height="50" rx="6" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface)"/>
+                <line x1="20" y1="35" x2="95" y2="35" stroke="#2D6A4F" stroke-width="3" stroke-linecap="round"/>
+                <line x1="45" y1="52" x2="70" y2="52" stroke="#5ECA95" stroke-width="2"/>
+                <line x1="45" y1="62" x2="65" y2="62" stroke="#5ECA95" stroke-width="2"/>
+                <!-- Plant symbol on container -->
+                <path d="M 55 75 C 55 68 50 65 47 67 C 47 72 52 75 55 75 Z" fill="#5ECA95"/>
+                <!-- Eco cargo transport van -->
+                <path d="M 115 50 L 145 50 L 165 65 L 165 85 L 115 85 Z" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface)"/>
+                <rect x="140" y="55" width="18" height="12" rx="2" stroke="#2D6A4F" stroke-width="1.8"/>
+                <circle cx="130" cy="86" r="7" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface-elevated)"/>
+                <circle cx="155" cy="86" r="7" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface-elevated)"/>
+                <!-- Clock / schedule indicator -->
+                <circle cx="105" cy="25" r="12" stroke="#F4A236" stroke-width="2"/>
+                <polyline points="105,18 105,25 112,25" stroke="#F4A236" stroke-width="1.8"/>
               </svg>
             </div>
             <h3 class="step-title" data-i18n="cycle.step1_title">1. Забір за графіком</h3>
             <p class="step-desc" data-i18n="cycle.step1_desc">
-              Забираємо вологі рослинні залишки з пивоварень, сокових виробництв, пекарень та кухонь у герметичних контейнерах за узгодженим графіком.
+              Герметичні оборотні контейнери для стабільного потоку від ~20 кг/добу.
             </p>
             <div class="step-metric-tag" data-i18n="cycle.step1_metric">Від ~20 кг/добу стабільний потік</div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про забір</summary>
+              <div class="details-body">
+                Забираємо рослинні залишки з пивоварень, сокових цехів та пекарень Києва. Герметичні баки виключають запах та накопичення комах на вашій території.
+              </div>
+            </details>
           </div>
 
-          <!-- Step 2 -->
+          <!-- Step 2: Digestion Module -->
           <div class="step-card">
-            <div class="step-icon-wrap" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
-                <path d="M18 32 C18 22 24 16 34 16 C39 16 43 18 46 22" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                <path d="M46 32 C46 42 40 48 30 48 C25 48 21 46 18 42" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                <circle cx="32" cy="32" r="5" fill="currentColor"/>
+            <div class="step-illustration-wrap" aria-hidden="true">
+              <!-- Linear Vector Illustration: Multi-tier Larvae Cultivation System -->
+              <svg class="step-illustration-svg" viewBox="0 0 200 110" fill="none" stroke="currentColor">
+                <!-- Multi-tier vertical racks -->
+                <rect x="35" y="18" width="8" height="78" rx="2" fill="#2D6A4F"/>
+                <rect x="135" y="18" width="8" height="78" rx="2" fill="#2D6A4F"/>
+                <!-- Tray 1 -->
+                <rect x="43" y="28" width="92" height="14" rx="3" stroke="#2D6A4F" stroke-width="2" fill="var(--bg-surface)"/>
+                <ellipse cx="65" cy="35" rx="6" ry="2.5" fill="#5ECA95"/>
+                <ellipse cx="85" cy="35" rx="7" ry="2.5" fill="#5ECA95"/>
+                <ellipse cx="110" cy="35" rx="6" ry="2.5" fill="#5ECA95"/>
+                <!-- Tray 2 -->
+                <rect x="43" y="50" width="92" height="14" rx="3" stroke="#2D6A4F" stroke-width="2" fill="var(--bg-surface)"/>
+                <ellipse cx="60" cy="57" rx="7" ry="2.5" fill="#5ECA95"/>
+                <ellipse cx="90" cy="57" rx="8" ry="3" fill="#5ECA95"/>
+                <ellipse cx="118" cy="57" rx="6" ry="2.5" fill="#5ECA95"/>
+                <!-- Tray 3 -->
+                <rect x="43" y="72" width="92" height="14" rx="3" stroke="#2D6A4F" stroke-width="2" fill="var(--bg-surface)"/>
+                <ellipse cx="70" cy="79" rx="7" ry="2.5" fill="#5ECA95"/>
+                <ellipse cx="95" cy="79" rx="7" ry="2.5" fill="#5ECA95"/>
+                <!-- Sensor / Microclimate monitor -->
+                <rect x="155" y="32" width="26" height="38" rx="4" stroke="#F4A236" stroke-width="2" fill="var(--bg-surface)"/>
+                <line x1="160" y1="42" x2="176" y2="42" stroke="#F4A236" stroke-width="1.8"/>
+                <line x1="160" y1="50" x2="172" y2="50" stroke="#F4A236" stroke-width="1.8"/>
+                <circle cx="168" cy="60" r="2.5" fill="#5ECA95"/>
               </svg>
             </div>
             <h3 class="step-title" data-i18n="cycle.step2_title">2. Переробка личинками</h3>
             <p class="step-desc" data-i18n="cycle.step2_desc">
-              Личинки BSF інтенсивно споживають субстрат, скорочуючи його суху масу на 60–85% та зменшуючи утворення метану.
+              Інтенсивне поїдання субстрату личинками BSF без їдких запахів.
             </p>
             <div class="step-metric-tag" data-i18n="cycle.step2_metric">31.25 кг/м²/добу щільність</div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про технологію</summary>
+              <div class="details-body">
+                Личинки скорочують суху масу субстрату на 60–85% (Eawag/Sandec), швидко переробляючи вуглеводи й клітковину та блокуючи процеси анаеробного бродіння.
+              </div>
+            </details>
           </div>
 
-          <!-- Step 3 -->
+          <!-- Step 3: Separation & Products -->
           <div class="step-card">
-            <div class="step-icon-wrap" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            <div class="step-illustration-wrap" aria-hidden="true">
+              <!-- Linear Vector Illustration: Fractionation (Protein + Lipid Oil + Frass) -->
+              <svg class="step-illustration-svg" viewBox="0 0 200 110" fill="none" stroke="currentColor">
+                <!-- Centrifugal separator funnel -->
+                <path d="M 60 22 L 140 22 L 115 55 L 115 75 L 85 75 L 85 55 Z" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface)"/>
+                <!-- 3 Output Arrows -->
+                <path d="M 85 75 L 45 92" stroke="#5ECA95" stroke-width="2" stroke-linecap="round"/>
+                <path d="M 100 75 L 100 95" stroke="#F4A236" stroke-width="2" stroke-linecap="round"/>
+                <path d="M 115 75 L 155 92" stroke="#9A5B00" stroke-width="2" stroke-linecap="round"/>
+                <!-- Stream 1: Protein powder sack -->
+                <rect x="25" y="78" width="22" height="22" rx="3" stroke="#5ECA95" stroke-width="1.8" fill="var(--bg-surface)"/>
+                <text x="36" y="93" text-anchor="middle" font-size="8" font-family="'JetBrains Mono', monospace" fill="#5ECA95" font-weight="700">PRO</text>
+                <!-- Stream 2: Lipid oil bottle -->
+                <path d="M 94 82 L 106 82 L 108 100 L 92 100 Z" stroke="#F4A236" stroke-width="1.8" fill="var(--bg-surface)"/>
+                <circle cx="100" cy="92" r="3" fill="#F4A236"/>
+                <!-- Stream 3: Frass pellets -->
+                <circle cx="160" cy="85" r="3.5" fill="#9A5B00"/>
+                <circle cx="170" cy="90" r="3" fill="#9A5B00"/>
+                <circle cx="164" cy="96" r="4" fill="#9A5B00"/>
               </svg>
             </div>
             <h3 class="step-title" data-i18n="cycle.step3_title">3. Отримання продуктів</h3>
             <p class="step-desc" data-i18n="cycle.step3_desc">
-              Відокремлюємо передлялечок на протеїнову фракцію та технічний жир. Залишок субстрату формує стабілізований зоогумус (фрас).
+              Розподіл на кормову білкову фракцію, жир і зоогумус (фрас).
             </p>
-            <div class="step-metric-tag" data-i18n="cycle.step3_metric">15–20% вихід живої біомаси</div>
+            <div class="step-metric-tag" data-i18n="cycle.step3_metric">15–20% вихід біомаси</div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про фракціонування</summary>
+              <div class="details-body">
+                Передзаляльковування дає концентрований сирий протеїн і лауринову кислоту для кормів, а залишок субстрату формує сухий біологічно активний зоогумус.
+              </div>
+            </details>
           </div>
 
-          <!-- Step 4 -->
+          <!-- Step 4: Circular Return -->
           <div class="step-card">
-            <div class="step-icon-wrap" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            <div class="step-illustration-wrap" aria-hidden="true">
+              <!-- Linear Vector Illustration: Soil & Feed Closed Loop -->
+              <svg class="step-illustration-svg" viewBox="0 0 200 110" fill="none" stroke="currentColor">
+                <!-- Circular Infinity Arrow Track -->
+                <path d="M 60 55 C 60 30 100 30 100 55 C 100 80 140 80 140 55 C 140 30 100 30 100 55 C 100 80 60 80 60 55 Z" stroke="#5ECA95" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <!-- Plant sprout on left loop -->
+                <g transform="translate(60, 55)">
+                  <path d="M 0 10 L 0 -12" stroke="#2D6A4F" stroke-width="2"/>
+                  <path d="M 0 -8 C -10 -15 -12 0 0 0 Z" fill="#5ECA95"/>
+                  <path d="M 0 -12 C 10 -19 12 -4 0 -4 Z" fill="#2D6A4F"/>
+                </g>
+                <!-- Animal / Poultry silhouette on right loop -->
+                <g transform="translate(140, 52)">
+                  <ellipse cx="0" cy="0" rx="9" ry="7" fill="var(--bg-surface)" stroke="#F4A236" stroke-width="1.8"/>
+                  <circle cx="7" cy="-5" r="4.5" fill="#F4A236"/>
+                  <path d="M 11 -6 L 15 -5 L 11 -4 Z" fill="#F4A236"/>
+                </g>
+                <!-- Ground base line -->
+                <line x1="20" y1="95" x2="180" y2="95" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
             <h3 class="step-title" data-i18n="cycle.step4_title">4. Повернення в цикл</h3>
             <p class="step-desc" data-i18n="cycle.step4_desc">
-              Кормовий білок збагачує раціони птиці та риби, а зоогумус повертається на фермерські угіддя, до шкільних оранжерей і міських садів Києва.
+              Протеїн збагачує корми, а зоогумус відновлює родючість міських ґрунтів.
             </p>
             <div class="step-metric-tag" data-i18n="cycle.step4_metric">Мета: замкнений цикл</div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про користь</summary>
+              <div class="details-body">
+                Поживні речовини повертаються в харчовий ланцюг без захоронення на сміттєзвалищах або викидів у повітря.
+              </div>
+            </details>
           </div>
         </div>
 
@@ -388,25 +494,165 @@
     </section>
 
     <!-- ======================================================================
-         4. FOR WASTE SUPPLIERS (KYIV DISTRICTS & APPLICATION FORM)
+         3.1 BIOLOGICAL PHOTO GALLERY (Licensed Open Photos with Attributions)
          ====================================================================== -->
-    <section class="section" id="for-waste">
+    <section class="section section-elevated" id="photos">
       <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Світлини біології Hermetia illucens</div>
+          <h2 class="section-title">Як виглядає біоконверсія BSF на практиці</h2>
+          <p class="section-desc">
+            Схематичні зображення та наукові світлини личинок, дорослої мухи та готового зоогумусу з відкритих джерел.
+          </p>
+        </div>
+
+        <div class="photos-grid">
+          <!-- Photo 1: BSF Larvae -->
+          <div class="photo-card">
+            <div class="photo-img-wrap">
+              <img src="assets/photos/bsf-larvae.svg" alt="Личинки Hermetia illucens на субстраті під час біоконверсії" class="photo-img" loading="lazy" width="600" height="400">
+            </div>
+            <div class="photo-content">
+              <h3 class="photo-title">Личинки BSF (препупи)</h3>
+              <p class="photo-desc">
+                Активна фаза біоконверсії рослинного субстрату, що накопичує високу концентрацію протеїну та корисних ліпідів.
+              </p>
+              <div class="photo-attribution">
+                <span>Автор: Martin Cooper (Wikimedia Commons)</span>
+                <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener" class="photo-license-link">CC BY 2.0</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 2: Adult BSF Fly -->
+          <div class="photo-card">
+            <div class="photo-img-wrap">
+              <img src="assets/photos/bsf-adult.svg" alt="Доросла особина Hermetia illucens на листку" class="photo-img" loading="lazy" width="600" height="400">
+            </div>
+            <div class="photo-content">
+              <h3 class="photo-title">Доросла особина (імаго)</h3>
+              <p class="photo-desc">
+                Живе 4–8 діб виключно за рахунок запасів жиру, не має ротового апарату, не харчується і не розносить інфекції.
+              </p>
+              <div class="photo-attribution">
+                <span>Автор: Judy Gallagher (Wikimedia Commons)</span>
+                <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener" class="photo-license-link">CC BY 2.0</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 3: Frass Biofertilizer -->
+          <div class="photo-card">
+            <div class="photo-img-wrap">
+              <img src="assets/photos/bsf-frass.svg" alt="Зоогумус фрас BSF для підживлення ґрунту" class="photo-img" loading="lazy" width="600" height="400">
+            </div>
+            <div class="photo-content">
+              <h3 class="photo-title">Зоогумус (фрас BSF)</h3>
+              <p class="photo-desc">
+                Стабілізований органічний субстрат з природним вмістом хітину для покращення мікрофлори та імунітету рослин.
+              </p>
+              <div class="photo-attribution">
+                <span>Джерело: EcoFly Prototype Archive</span>
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="photo-license-link">CC BY 4.0</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. FOR WASTE SUPPLIERS (With Large Category Illustration & Form)
+         ====================================================================== -->
+    <section class="section section-primary" id="for-waste">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge" data-i18n="waste.badge">Для харчових виробництв, HoReCa та ритейлу</div>
+          <h2 class="section-title" data-i18n="waste.title">Вивіз органічних відходів без запаху та турбот</h2>
+          <p class="section-desc" data-i18n="waste.lead">
+            Перетворіть залишки пивоваріння, соків або пекарень на практичний внесок у циркулярну економіку з документальним підтвердженням переробки.
+          </p>
+        </div>
+
+        <!-- Large SVG Feature Illustration: 4 Organic Waste Categories -->
+        <div class="feature-illustration-wrap" aria-label="Схематична ілюстрація 4 типів рослинних відходів">
+          <svg class="feature-illustration-svg" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background subtle divider lines -->
+            <line x1="200" y1="20" x2="200" y2="220" stroke="var(--border-subtle)" stroke-dasharray="4 4"/>
+            <line x1="400" y1="20" x2="400" y2="220" stroke="var(--border-subtle)" stroke-dasharray="4 4"/>
+            <line x1="600" y1="20" x2="600" y2="220" stroke="var(--border-subtle)" stroke-dasharray="4 4"/>
+
+            <!-- Category 1: Brewer's spent grain -->
+            <g transform="translate(100, 110)">
+              <!-- Brewery Barrel & Grain -->
+              <rect x="-40" y="-35" width="80" height="70" rx="10" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <line x1="-40" y1="-12" x2="40" y2="-12" stroke="#2D6A4F" stroke-width="2"/>
+              <line x1="-40" y1="12" x2="40" y2="12" stroke="#2D6A4F" stroke-width="2"/>
+              <!-- Barley ears -->
+              <path d="M 0 -35 L 0 -65" stroke="#F4A236" stroke-width="2"/>
+              <ellipse cx="-8" cy="-55" rx="5" ry="3" fill="#F4A236"/>
+              <ellipse cx="8" cy="-50" rx="5" ry="3" fill="#F4A236"/>
+              <ellipse cx="-6" cy="-42" rx="5" ry="3" fill="#F4A236"/>
+              <text x="0" y="55" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Пивна дробина</text>
+              <text x="0" y="72" text-anchor="middle" font-size="11" fill="var(--text-muted)">Солодові залишки</text>
+            </g>
+
+            <!-- Category 2: Fruit & Vegetable pomace -->
+            <g transform="translate(300, 110)">
+              <!-- Juice press / Apple & Pear silhouettes -->
+              <circle cx="-16" cy="-2" r="24" stroke="#5ECA95" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <path d="M -16 -26 C -18 -36 -12 -38 -12 -38" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M -16 -26 C -8 -34 2 -26 -16 -26" fill="#5ECA95"/>
+              <path d="M 12 18 C 30 18 36 -10 24 -24 C 18 -32 6 -32 0 -24 C -12 -10 -6 18 12 18 Z" stroke="#F4A236" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <!-- Pomace drops -->
+              <circle cx="28" cy="8" r="3" fill="#F4A236"/>
+              <circle cx="34" cy="-2" r="2.5" fill="#5ECA95"/>
+              <text x="0" y="55" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Вичавки фруктів</text>
+              <text x="0" y="72" text-anchor="middle" font-size="11" fill="var(--text-muted)">Макуха соків та квасу</text>
+            </g>
+
+            <!-- Category 3: Bakery & Bread residues -->
+            <g transform="translate(500, 110)">
+              <!-- Bakery bread loaf / wheat -->
+              <ellipse cx="0" cy="-5" rx="36" ry="22" stroke="#9A5B00" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <path d="M -18 -16 Q -12 -5 -18 6" stroke="#9A5B00" stroke-width="2"/>
+              <path d="M 0 -18 Q 6 -5 0 8" stroke="#9A5B00" stroke-width="2"/>
+              <path d="M 18 -16 Q 24 -5 18 6" stroke="#9A5B00" stroke-width="2"/>
+              <!-- Flour sack behind -->
+              <rect x="-42" y="-38" width="22" height="30" rx="3" stroke="#B8CBBF" stroke-width="2" fill="var(--bg-surface-elevated)"/>
+              <text x="0" y="55" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Пекарські залишки</text>
+              <text x="0" y="72" text-anchor="middle" font-size="11" fill="var(--text-muted)">Хліб, борошно, тісто</text>
+            </g>
+
+            <!-- Category 4: HoReCa pre-consumer vegetables -->
+            <g transform="translate(700, 110)">
+              <!-- Kitchen prep cutting board & vegetable trimming -->
+              <rect x="-35" y="-28" width="70" height="48" rx="6" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <line x1="-35" y1="-12" x2="35" y2="-12" stroke="#2D6A4F" stroke-width="1.8"/>
+              <!-- Carrot & celery leaf silhouette -->
+              <path d="M -15 6 L 15 -18 L 18 -12 L -8 10 Z" stroke="#F4A236" stroke-width="2" fill="#F4A236" opacity="0.8"/>
+              <path d="M 15 -18 Q 24 -30 20 -36 Q 14 -28 18 -12" stroke="#5ECA95" stroke-width="2" fill="#5ECA95"/>
+              <text x="0" y="55" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Рослинні залишки HoReCa</text>
+              <text x="0" y="72" text-anchor="middle" font-size="11" fill="var(--text-muted)">Чисті овочеві обрізки</text>
+            </g>
+          </svg>
+        </div>
+
         <div class="supplier-grid">
           <!-- Benefits and Conditions -->
           <div>
-            <div class="section-badge" data-i18n="waste.badge">Для харчових виробництв, HoReCa та ритейлу</div>
-            <h2 class="section-title" data-i18n="waste.title">Вивіз органічних відходів без запаху та турбот</h2>
-            <p class="section-desc" style="margin-bottom: 2rem;" data-i18n="waste.lead">
-              Перетворіть залишки пивоваріння, соків або пекарень на практичний внесок у циркулярну економіку з документальним підтвердженням переробки.
-            </p>
-
             <div class="value-props-list">
               <div class="prop-item">
                 <div class="prop-bullet">✓</div>
                 <div>
                   <div class="prop-title" data-i18n="waste.p1_title">Регулярний забір і чисті контейнери</div>
-                  <div class="prop-text" data-i18n="waste.p1_desc">Надаємо герметичні оборотні контейнери, що запобігає появі комах, запаху та бродіння на вашій території.</div>
+                  <div class="prop-text" data-i18n="waste.p1_desc">Герметичні оборотні місткості запобігають бродінню та запаху на території.</div>
+                  <details class="details-collapse">
+                    <summary class="details-summary">Докладніше про логістику</summary>
+                    <div class="details-body">
+                      Обмін контейнерів здійснюється за погодженим графіком (щодня або 2–3 рази на тиждень) безпосередньо з вашого виробництва або кухні.
+                    </div>
+                  </details>
                 </div>
               </div>
 
@@ -414,7 +660,13 @@
                 <div class="prop-bullet">✓</div>
                 <div>
                   <div class="prop-title" data-i18n="waste.p2_title">Зразок документа про переробку</div>
-                  <div class="prop-text" data-i18n="waste.p2_desc">Зразок паспорта партії із фіксацією переданого обсягу та підтвердженням вторинної біоконверсії замість вивезення на полігон.</div>
+                  <div class="prop-text" data-i18n="waste.p2_desc">Зразок паспорта партії з підтвердженням вторинної переробки замість вивезення на полігон.</div>
+                  <details class="details-collapse">
+                    <summary class="details-summary">Докладніше про звітність</summary>
+                    <div class="details-body">
+                      Кожна передана партія фіксується за унікальним номером з масою та типом сировини для підтвердження зелених стандартів вашого бізнесу.
+                    </div>
+                  </details>
                 </div>
               </div>
 
@@ -422,12 +674,18 @@
                 <div class="prop-bullet">✓</div>
                 <div>
                   <div class="prop-title" data-i18n="waste.p3_title">Соціальний внесок у Київ</div>
-                  <div class="prop-text" data-i18n="waste.p3_desc">Можливість безоплатно передавати частину отриманого зоогумусу київським школам, юннатівським гурткам і міським садам.</div>
+                  <div class="prop-text" data-i18n="waste.p3_desc">Частина отриманого зоогумусу безоплатно передається школам і міським садам.</div>
+                  <details class="details-collapse">
+                    <summary class="details-summary">Докладніше про міські ініціативи</summary>
+                    <div class="details-body">
+                      Ми співпрацюємо з юннатівськими гуртками та громадськими садами Києва, підтримуючи відновлення ґрунтів і природничу освіту.
+                    </div>
+                  </details>
                 </div>
               </div>
             </div>
 
-            <!-- Kyiv District Interactive Selector (Kyiv Only) -->
+            <!-- Kyiv District Selector Panel -->
             <div class="kyiv-district-panel">
               <div class="district-panel-title">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -450,7 +708,6 @@
             </div>
 
             <form id="waste-form" action="#" method="POST">
-              <!-- Honeypot spam trap -->
               <input type="text" name="hp_company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="form-group">
@@ -508,7 +765,6 @@
                   <span data-i18n="waste.chk_donate">Передати частину отриманого зоогумусу київським школам і міським садам</span>
                 </label>
 
-                <!-- Mandatory Data Consent Checkbox -->
                 <label class="checkbox-label">
                   <input type="checkbox" name="consent" class="checkbox-input" required>
                   <span data-i18n="waste.chk_consent">Я даю згоду на обробку контактних даних відповідно до <a href="#contact" class="privacy-link">примітки про конфіденційність</a> *</span>
@@ -532,9 +788,9 @@
     </section>
 
     <!-- ======================================================================
-         5. FOR BUYERS (PRODUCTS, COMPARISON TABLE & PRICE TRANSPARENCY)
+         5. FOR BUYERS (With Large Product Illustration & LOI Form)
          ====================================================================== -->
-    <section class="section section-alt" id="for-buyers">
+    <section class="section section-surface" id="for-buyers">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="buyers.badge">Для комбікормових виробництв, ферм та аквакультури</div>
@@ -544,6 +800,53 @@
           </p>
         </div>
 
+        <!-- Large SVG Feature Illustration: 3 Outputs (Protein, Lipids, Frass) -->
+        <div class="feature-illustration-wrap" aria-label="Схематична ілюстрація 3 продуктів переробки">
+          <svg class="feature-illustration-svg" viewBox="0 0 750 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="250" y1="20" x2="250" y2="200" stroke="var(--border-subtle)" stroke-dasharray="4 4"/>
+            <line x1="500" y1="20" x2="500" y2="200" stroke="var(--border-subtle)" stroke-dasharray="4 4"/>
+
+            <!-- Product 1: Feed Protein Pellets/Meal -->
+            <g transform="translate(125, 100)">
+              <!-- Kraft sack of insect protein -->
+              <path d="M -35 40 L -30 -20 Q -30 -30 0 -30 Q 30 -30 30 -20 L 35 40 Z" stroke="#2D6A4F" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <path d="M -24 -25 Q 0 -18 24 -25" stroke="#2D6A4F" stroke-width="2"/>
+              <!-- Protein Pellets & Powder dots -->
+              <circle cx="-12" cy="10" r="3.5" fill="#5ECA95"/>
+              <circle cx="5" cy="5" r="4" fill="#5ECA95"/>
+              <circle cx="16" cy="18" r="3" fill="#5ECA95"/>
+              <circle cx="-6" cy="24" r="3.5" fill="#5ECA95"/>
+              <text x="0" y="58" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Кормовий протеїн</text>
+              <text x="0" y="74" text-anchor="middle" font-size="11" fill="var(--text-muted)">Амінокислоти та білок</text>
+            </g>
+
+            <!-- Product 2: BSF Lipids Extract Bottle -->
+            <g transform="translate(375, 100)">
+              <!-- Modern extraction glass flask -->
+              <rect x="-8" y="-45" width="16" height="15" stroke="#F4A236" stroke-width="2" fill="var(--bg-surface)"/>
+              <path d="M -8 -30 L -28 20 Q -30 38 0 38 Q 30 38 28 20 L 8 -30 Z" stroke="#F4A236" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <!-- Golden lipid liquid level -->
+              <path d="M -24 15 Q 0 8 24 15 L 26 28 Q 24 36 0 36 Q -24 36 -26 28 Z" fill="#F4A236" opacity="0.6"/>
+              <!-- Oil drop -->
+              <circle cx="0" cy="-6" r="4" fill="#F4A236"/>
+              <text x="0" y="58" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Личинковий жир</text>
+              <text x="0" y="74" text-anchor="middle" font-size="11" fill="var(--text-muted)">Лауринова кислота & MCFA</text>
+            </g>
+
+            <!-- Product 3: Zoohumus / Frass Bag -->
+            <g transform="translate(625, 100)">
+              <!-- Biofertilizer bag & Sprout -->
+              <rect x="-35" y="-20" width="70" height="58" rx="8" stroke="#9A5B00" stroke-width="2.5" fill="var(--bg-surface)"/>
+              <!-- Sprout emblem on bag -->
+              <path d="M 0 10 L 0 -8" stroke="#5ECA95" stroke-width="2.5"/>
+              <path d="M 0 -2 C -10 -10 -12 4 0 4 Z" fill="#5ECA95"/>
+              <path d="M 0 -8 C 10 -16 12 -2 0 -2 Z" fill="#2D6A4F"/>
+              <text x="0" y="58" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="13" font-weight="700" fill="var(--text-primary)">Зоогумус (фрас)</text>
+              <text x="0" y="74" text-anchor="middle" font-size="11" fill="var(--text-muted)">Біодобриво з хітином</text>
+            </g>
+          </svg>
+        </div>
+
         <!-- 3 Product Cards -->
         <div class="products-cards-grid">
           <!-- Product 1 -->
@@ -551,12 +854,18 @@
             <span class="product-badge">Основний продукт</span>
             <h3 class="product-title" data-i18n="buyers.prod1_title">Кормовий протеїн з личинок</h3>
             <p class="product-desc" data-i18n="buyers.prod1_desc">
-              Багатий на незамінні амінокислоти та лауринову кислоту (Spranghers et al., 2017). Підходить для дослідних раціонів молодняку птиці та форелі.
+              Багатий на незамінні амінокислоти та лауринову кислоту (Spranghers et al., 2017).
             </p>
             <div class="product-meta-box">
               <div class="product-meta-lbl">Лабораторний аналіз</div>
               <div class="product-meta-val" data-i18n="buyers.prod1_val">Дані уточнюються за результатами тестування прототипу</div>
             </div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про застосування</summary>
+              <div class="details-body">
+                Підходить для дослідних раціонів форелі, осетра, молодняку птиці та складових гіпоалергенних раціонів для непродуктивних тварин (pet food).
+              </div>
+            </details>
           </div>
 
           <!-- Product 2 -->
@@ -564,12 +873,18 @@
             <span class="product-badge">Енергетичний компонент</span>
             <h3 class="product-title" data-i18n="buyers.prod2_title">Личинковий жир (ліпіди)</h3>
             <p class="product-desc" data-i18n="buyers.prod2_desc">
-              Високий вміст середньоланцюгових жирних кислот (MCFA), корисних для підтримки кишкової мікрофлори тварин.
+              Високий вміст середньоланцюгових жирних кислот (MCFA), корисних для кишкової мікрофлори тварин.
             </p>
             <div class="product-meta-box">
               <div class="product-meta-lbl">Показники ліпідів</div>
               <div class="product-meta-val" data-i18n="buyers.prod2_val">Дані уточнюються за результатами тестування прототипу</div>
             </div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про властивості</summary>
+              <div class="details-body">
+                Забезпечує природний бактеріостатичний ефект завдяки вмісту лауринової кислоти, зменшуючи потребу в антибіотиках у кормах.
+              </div>
+            </details>
           </div>
 
           <!-- Product 3 -->
@@ -577,16 +892,22 @@
             <span class="product-badge">Органічне добриво</span>
             <h3 class="product-title" data-i18n="buyers.prod3_title">Зоогумус (фрас BSF)</h3>
             <p class="product-desc" data-i18n="buyers.prod3_desc">
-              Природне біодобриво, що містить хітин. Стимулює природний захист рослин та збагачує ґрунтову мікробіоту.
+              Природне біодобриво з хітином для стимуляції росту та мікробіоти ґрунту.
             </p>
             <div class="product-meta-box">
               <div class="product-meta-lbl">Показники NPK та гумінових сполук</div>
               <div class="product-meta-val" data-i18n="buyers.prod3_val">Дані уточнюються за результатами тестування прототипу</div>
             </div>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про зоогумус</summary>
+              <div class="details-body">
+                Стимулює синтез хітинази в рослинах, що створює природний бар'єр проти грибкових патогенів і ґрунтових шкідників.
+              </div>
+            </details>
           </div>
         </div>
 
-        <!-- Comparison Table (Soy & Fishmeal Prices Removed) -->
+        <!-- Comparison Table -->
         <div class="comparison-wrap">
           <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 1.25rem;" data-i18n="table.title">
             Порівняльна таблиця: Соя / Рибне борошно / Протеїн з личинок EcoFly
@@ -637,7 +958,7 @@
           </div>
         </div>
 
-        <!-- Buyer Inquiry / LOI Form with Distinct Separate Consent Checkbox -->
+        <!-- Buyer Inquiry Form with Separate Consent Checkbox -->
         <div class="form-card" style="max-width: 800px; margin: 0 auto;">
           <div class="form-header">
             <h3 class="form-header-title" data-i18n="buyers.form_title">Запросити зразок протеїну або обговорити наміри (LOI)</h3>
@@ -645,7 +966,6 @@
           </div>
 
           <form id="buyers-form" action="#" method="POST">
-            <!-- Honeypot -->
             <input type="text" name="hp_company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <div class="form-group">
@@ -682,7 +1002,6 @@
 
               <hr style="border: none; border-top: 1px dashed var(--border-subtle); margin: 0.75rem 0;">
 
-              <!-- Mandatory Data Consent Checkbox (Fully Separated) -->
               <label class="checkbox-label">
                 <input type="checkbox" name="consent" class="checkbox-input" required>
                 <span data-i18n="buyers.chk_consent">Я даю згоду на обробку контактних даних відповідно до <a href="#contact" class="privacy-link">примітки про конфіденційність</a> *</span>
@@ -705,21 +1024,52 @@
     </section>
 
     <!-- ======================================================================
-         6. IMPACT CALCULATOR (Eawag/Sandec Scientific Coefficients)
+         6. IMPACT CALCULATOR (With Large Stat Tiles Grid)
          ====================================================================== -->
-    <section class="section" id="calculator">
+    <section class="section section-accent-tint" id="calculator">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="calc.badge">Калькулятор ефекту BSF</div>
           <h2 class="section-title" data-i18n="calc.title">Розрахуйте ефект переробки ваших відходів</h2>
           <p class="section-desc" data-i18n="calc.desc">
-            Усі коефіцієнти базуються на наукових специфікаціях швейцарського інституту Eawag/Sandec («Black Soldier Fly Biowaste Processing»).
+            Усі коефіцієнти базуються на наукових специфікаціях швейцарського інституту Eawag/Sandec.
           </p>
         </div>
 
+        <!-- 4 Large Stat Tiles -->
+        <div class="stat-tiles-grid">
+          <div class="stat-tile">
+            <div class="stat-tile-num">15–20%</div>
+            <div class="stat-tile-title">Конверсія субстрату</div>
+            <div class="stat-tile-desc">Вихід живої біомаси личинок із вологої маси органіки.</div>
+            <div class="stat-tile-src">Eawag/Sandec (2017), p. 18</div>
+          </div>
+
+          <div class="stat-tile">
+            <div class="stat-tile-num">60–85%</div>
+            <div class="stat-tile-title">Скорочення відходів</div>
+            <div class="stat-tile-desc">Зниження сухої маси органічного субстрату за цикл відгодівлі.</div>
+            <div class="stat-tile-src">Eawag/Sandec, Chapter 2</div>
+          </div>
+
+          <div class="stat-tile">
+            <div class="stat-tile-num">31.25</div>
+            <div class="stat-tile-title">кг/м²/добу</div>
+            <div class="stat-tile-desc">Щільність вертикального модульного завантаження.</div>
+            <div class="stat-tile-src">Технічні нормативи BSF</div>
+          </div>
+
+          <div class="stat-tile">
+            <div class="stat-tile-num amber">28×</div>
+            <div class="stat-tile-title">Зменшення парникового впливу</div>
+            <div class="stat-tile-desc">Потенціал метану від гниття на звалищі проти CO2.</div>
+            <div class="stat-tile-src">Звіт IPCC AR5 (GWP100 = 28)</div>
+          </div>
+        </div>
+
+        <!-- Interactive Calculator Module -->
         <div class="calculator-card">
           <div class="calc-grid">
-            <!-- Inputs -->
             <div class="calc-inputs">
               <div class="form-group">
                 <label for="calc-kg-input" class="form-label" data-i18n="calc.lbl_input">Обсяг органічних відходів на день (кг):</label>
@@ -739,21 +1089,18 @@
 
             <!-- Dynamic Live Results -->
             <div class="calc-results-grid">
-              <!-- Result 1 -->
               <div class="calc-res-box featured">
                 <div class="calc-res-label" data-i18n="calc.res1_title">Вихід живої біомаси личинок</div>
                 <div class="calc-res-number" id="calc-res-larvae">900 – 1 200 кг</div>
                 <div class="calc-res-sub" data-i18n="calc.res1_sub">15–20% від маси вологого субстрату за 30 днів</div>
               </div>
 
-              <!-- Result 2: Updated Wording -->
               <div class="calc-res-box">
                 <div class="calc-res-label" data-i18n="calc.res2_title">Буде перероблено замість вивезення на полігон</div>
                 <div class="calc-res-number" id="calc-res-landfill">6.00 т</div>
                 <div class="calc-res-sub" data-i18n="calc.res2_sub">Зменшує анаеробне утворення метану</div>
               </div>
 
-              <!-- Result 3 -->
               <div class="calc-res-box">
                 <div class="calc-res-label" data-i18n="calc.res3_title">Орієнтовна площа культиватора</div>
                 <div class="calc-res-number" id="calc-res-area">~6.4 м²</div>
@@ -770,9 +1117,9 @@
     </section>
 
     <!-- ======================================================================
-         7. BATCH PASSPORT SPECIMEN (Sample Document)
+         7. BATCH PASSPORT SPECIMEN
          ====================================================================== -->
-    <section class="section section-alt" id="passport">
+    <section class="section section-elevated" id="passport">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="passport.badge">Прозорість та ESG-звітність</div>
@@ -783,7 +1130,6 @@
         </div>
 
         <div class="passport-preview-card">
-          <!-- Prominent Sample Watermarks in multiple places -->
           <div class="passport-watermark" aria-hidden="true" data-i18n="passport.sample_watermark">ЗРАЗОК • SPECIMEN</div>
 
           <div class="passport-header">
@@ -856,7 +1202,7 @@
     <!-- ======================================================================
          8. IMPACT & RESPONSIBILITY (Ecology, Society, Ethics)
          ====================================================================== -->
-    <section class="section" id="impact">
+    <section class="section section-primary" id="impact">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="impact.badge">Екологія, соціум, етика</div>
@@ -867,17 +1213,23 @@
         </div>
 
         <div class="impact-pillars-grid">
-          <!-- Pillar 1: IPCC AR5 Citation -->
+          <!-- Pillar 1 -->
           <div class="pillar-card">
             <div class="pillar-icon-box" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
             </div>
-            <h3 class="pillar-title" data-i18n="impact.p1_title">1. Екологія: Зменшення навантаження на полігони</h3>
+            <h3 class="pillar-title" data-i18n="impact.p1_title">1. Екологія: Деполігонізація</h3>
             <p class="pillar-text" data-i18n="impact.p1_desc">
-              Органіка становить від 27% до 65% міських побутових відходів (Світовий Банк). Біоконверсія личинками зменшує розкладання органіки на звалищах і утворення метану, потенціал глобального потепління якого у 28 разів перевищує показник CO2 протягом 100 років (IPCC AR5, GWP100 = 28).
+              Органіка становить від 27% до 65% міських побутових відходів (Світовий Банк). Біоконверсія скорочує утворення метану.
             </p>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про парниковий ефект</summary>
+              <div class="details-body">
+                Згідно зі звітом IPCC AR5, метан має потенціал глобального потепління GWP100 = 28. Швидка переробка личинками запобігає його емісії на полігоні №5 м. Києва.
+              </div>
+            </details>
           </div>
 
           <!-- Pillar 2 -->
@@ -892,8 +1244,14 @@
             </div>
             <h3 class="pillar-title" data-i18n="impact.p2_title">2. Соціум: Міські сади</h3>
             <p class="pillar-text" data-i18n="impact.p2_desc">
-              Частину отриманого зоогумусу ми плануємо надавати київським шкільним біологічним лабораторіям, юннатівським гурткам і громадським міським садам для відновлення міських ґрунтів.
+              Частину отриманого зоогумусу ми плануємо надавати київським шкільним біологічним лабораторіям і громадським садам.
             </p>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про освіту</summary>
+              <div class="details-body">
+                Освітні майстер-класи для юннатівських гуртків демонструють дітям принципи циркулярної економіки на практиці.
+              </div>
+            </details>
           </div>
 
           <!-- Pillar 3 -->
@@ -905,17 +1263,23 @@
             </div>
             <h3 class="pillar-title" data-i18n="impact.p3_title">3. Етика: Чистий субстрат</h3>
             <p class="pillar-text" data-i18n="impact.p3_desc">
-              Дотримання вимог Регламенту (ЄС) 2017/893 щодо дозволених рослинних субстратів (без м'яса, риби чи гною) та забезпечення простежуваності партії.
+              Дотримання вимог Регламенту (ЄС) 2017/893 щодо дозволених рослинних субстратів та забезпечення простежуваності партії.
             </p>
+            <details class="details-collapse">
+              <summary class="details-summary">Докладніше про стандарти</summary>
+              <div class="details-body">
+                Повна заборона на тваринні залишки, м'ясо або гній гарантує мікробіологічну чистоту отриманого протеїну та зоогумусу.
+              </div>
+            </details>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         9. RISKS & HONESTY (Radical Transparency)
+         9. RISKS & HONESTY (Visual Matrix with Status Badges)
          ====================================================================== -->
-    <section class="section section-alt" id="risks">
+    <section class="section section-surface" id="risks">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="risks.badge">Блок чесності</div>
@@ -925,66 +1289,53 @@
           </p>
         </div>
 
-        <div class="risks-grid">
-          <!-- Risk 1 -->
-          <div class="risk-card">
-            <div class="risk-card-header">
-              <h3 class="risk-title" data-i18n="risks.r1_title">Статус кормового білка в Україні</h3>
-            </div>
-            <p class="risk-desc" data-i18n="risks.r1_desc">
-              У ЄС білок личинок BSF дозволений для аквакультури та птиці, проте статус личинок як корму в Україні наразі уточнюється.
-            </p>
-            <div class="risk-mitigation" data-i18n="risks.r1_mit">
-              <strong>Як знімаємо:</strong> плануємо звернутися до Держпродспоживслужби щодо статусу та вимог реєстрації; початкові випробування орієнтуємо на сегмент pet food та лабораторні дослідження.
-            </div>
-          </div>
-
-          <!-- Risk 2 -->
-          <div class="risk-card">
-            <div class="risk-card-header">
-              <h3 class="risk-title" data-i18n="risks.r2_title">Сезонність і коливання обсягів</h3>
-            </div>
-            <p class="risk-desc" data-i18n="risks.r2_desc">
-              Обсяги виробництва соків, квасу чи пекарень можуть коливатися залежно від пори року.
-            </p>
-            <div class="risk-mitigation" data-i18n="risks.r2_mit">
-              <strong>Як знімаємо:</strong> комбінуємо різнорідні рослинні потоки (броварні, хлібопекарні, овочева переробка).
-            </div>
-          </div>
-
-          <!-- Risk 3 -->
-          <div class="risk-card">
-            <div class="risk-card-header">
-              <h3 class="risk-title" data-i18n="risks.r3_title">Готовність ринку платити за альтернативний протеїн</h3>
-            </div>
-            <p class="risk-desc" data-i18n="risks.r3_desc">
-              Традиційні тваринники консервативні щодо нових кормових інгредієнтів.
-            </p>
-            <div class="risk-mitigation" data-i18n="risks.r3_mit">
-              <strong>Як знімаємо:</strong> попередньо тестуємо зацікавленість через листи про наміри (LOI) та орієнтуємося на преміальні сегменти (форелеві господарства, pet food).
-            </div>
-          </div>
-
-          <!-- Risk 4 -->
-          <div class="risk-card">
-            <div class="risk-card-header">
-              <h3 class="risk-title" data-i18n="risks.r4_title">Запах та санітарні норми</h3>
-            </div>
-            <p class="risk-desc" data-i18n="risks.r4_desc">
-              Органічні залишки потребують суворої технологічної дисципліни для запобігання запахам.
-            </p>
-            <div class="risk-mitigation" data-i18n="risks.r4_mit">
-              <strong>Як знімаємо:</strong> відмова від м'яса та гною, щоденне завантаження у закриті модулі; у плануванні майданчика передбачаємо систему вентиляції з біофільтрами.
-            </div>
+        <div class="visual-table-wrap">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Ризик / Виклик</th>
+                  <th style="width: 15%;">Статус зняття</th>
+                  <th style="width: 35%;">Конкретний захід реагування</th>
+                  <th style="width: 25%;">Цільовий орієнтир</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Статус білка в Україні</strong></td>
+                  <td><span class="visual-status-pill progress">У ПРОЦЕСІ</span></td>
+                  <td>Плануємо звернутися до Держпродспоживслужби щодо регуляторного статусу та умов застосування.</td>
+                  <td>Орієнтація на pet food та лабораторні дослідження</td>
+                </tr>
+                <tr>
+                  <td><strong>Сезонність відходів</strong></td>
+                  <td><span class="visual-status-pill progress">У ПРОЦЕСІ</span></td>
+                  <td>Комбінуємо різнорідні рослинні потоки (броварні, хлібопекарні, овочева переробка).</td>
+                  <td>Стабільний потік незалежно від пори року</td>
+                </tr>
+                <tr>
+                  <td><strong>Готовність ринку платити</strong></td>
+                  <td><span class="visual-status-pill progress">У ПРОЦЕСІ</span></td>
+                  <td>Попередньо тестуємо зацікавленість через необов'язуючі листи про наміри (LOI).</td>
+                  <td>Фокус на аквакультурі (форель) та pet food</td>
+                </tr>
+                <tr>
+                  <td><strong>Запах та санітарні норми</strong></td>
+                  <td><span class="visual-status-pill planned">ЗАПЛАНОВАНО</span></td>
+                  <td>Відмова від м'яса/гною, закриті модулі; передбачаємо примусову витяжку з біофільтрами.</td>
+                  <td>Повна нейтралізація запахів у приміщенні</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         10. PROJECT STAGE & TIMELINE
+         10. PROJECT STAGE & TIMELINE (Visual Roadmap Table)
          ====================================================================== -->
-    <section class="section" id="timeline">
+    <section class="section section-elevated" id="timeline">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="timeline.badge">Етап проєкту та дорожня карта</div>
@@ -992,35 +1343,38 @@
           <p class="section-desc">Ми не видаємо гіпотези за досягнуті результати. Поточний статус прототипу:</p>
         </div>
 
-        <div class="timeline-wrap">
-          <!-- Item 1: Done -->
-          <div class="timeline-item">
-            <div class="timeline-marker done" aria-hidden="true"></div>
-            <span class="timeline-badge done" data-i18n="timeline.t1_status">ЗРОБЛЕНО</span>
-            <h3 class="timeline-title" data-i18n="timeline.t1_title">3 розмови з власниками (квас, свиноферма, олені)</h3>
-            <p class="timeline-text" data-i18n="timeline.t1_desc">
-              Проведено 3 розмови з власниками: виробником квасу щодо обсягів яблучної та хлібної макухи, власником свиноферми щодо вимог до перетравності протеїну та розводчиком оленів щодо раціону.
-            </p>
-          </div>
-
-          <!-- Item 2: In Progress -->
-          <div class="timeline-item">
-            <div class="timeline-marker active" aria-hidden="true"></div>
-            <span class="timeline-badge in-progress" data-i18n="timeline.t2_status">У ПРОЦЕСІ</span>
-            <h3 class="timeline-title" data-i18n="timeline.t2_title">Заплановані інтерв'ю</h3>
-            <p class="timeline-text" data-i18n="timeline.t2_desc">
-              Формуємо пул інтерв'ю з київськими закладами HoReCa, рітейлерами рослинної продукції та форелевими господарствами.
-            </p>
-          </div>
-
-          <!-- Item 3: Planned -->
-          <div class="timeline-item">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <span class="timeline-badge planned" data-i18n="timeline.t3_status">ПЛАНИ</span>
-            <h3 class="timeline-title" data-i18n="timeline.t3_title">Монтаж експериментального модуля прототипу</h3>
-            <p class="timeline-text" data-i18n="timeline.t3_desc">
-              Монтаж першого лабораторно-тестового модуля в Києві, калібрування раціону BSF та лабораторний аналіз отриманої біомаси.
-            </p>
+        <div class="visual-table-wrap">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 18%;">Етап</th>
+                  <th style="width: 15%;">Статус</th>
+                  <th style="width: 37%;">Зміст робіт</th>
+                  <th style="width: 30%;">Результат / Очікування</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Глибинні розмови</strong></td>
+                  <td><span class="visual-status-pill done">ЗРОБЛЕНО</span></td>
+                  <td>3 розмови з власниками: виробником квасу, власником свиноферми та розводчиком оленів.</td>
+                  <td>Підтверджено інтерес до стабільного протеїну та вивезення макухи</td>
+                </tr>
+                <tr>
+                  <td><strong>Аналіз ринку Києва</strong></td>
+                  <td><span class="visual-status-pill progress">У ПРОЦЕСІ</span></td>
+                  <td>Заплановані інтерв'ю з київськими закладами HoReCa, рітейлом та аквафермерами.</td>
+                  <td>Формування первинного пулу заявок на пілотний забір</td>
+                </tr>
+                <tr>
+                  <td><strong>Тестовий модуль</strong></td>
+                  <td><span class="visual-status-pill planned">ЗАПЛАНОВАНО</span></td>
+                  <td>Монтаж експериментального модуля прототипу в Києві, калібрування раціону BSF.</td>
+                  <td>Отримання перших сертифікованих зразків білка та фрасу</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -1029,7 +1383,7 @@
     <!-- ======================================================================
          11. TEAM & PARTNERS
          ====================================================================== -->
-    <section class="section section-alt" id="team">
+    <section class="section section-primary" id="team">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="team.badge">Команда та екосистема</div>
@@ -1089,9 +1443,9 @@
     </section>
 
     <!-- ======================================================================
-         12. FAQ (8 ACCORDION QUESTIONS)
+         12. FAQ (8 Accordion Questions)
          ====================================================================== -->
-    <section class="section" id="faq">
+    <section class="section section-surface" id="faq">
       <div class="container">
         <div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
           <div class="section-badge" data-i18n="faq.badge">Часті запитання</div>
@@ -1224,9 +1578,9 @@
     </section>
 
     <!-- ======================================================================
-         13. CONTACT HUB & FOOTER (Exact Real Contacts Only)
+         13. CONTACT HUB & FOOTER (With Image Credits Block)
          ====================================================================== -->
-    <section class="section section-alt" id="contact">
+    <section class="section section-elevated" id="contact">
       <div class="container">
         <div class="section-header">
           <div class="section-badge" data-i18n="contact.badge">Швидкий зв'язок</div>
@@ -1284,7 +1638,7 @@
           </div>
         </div>
 
-        <!-- Direct Social & Messenger Contacts Bar (Exact Real User Data Only) -->
+        <!-- Direct Social & Messenger Contacts Bar -->
         <div class="direct-contacts-bar">
           <div class="contact-links">
             <a href="https://t.me/Prosto_kit_007" target="_blank" rel="noopener" class="contact-link-item">
@@ -1312,7 +1666,7 @@
   </main>
 
   <!-- ========================================================================
-       FOOTER
+       FOOTER (With Image Credits)
        ======================================================================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -1326,6 +1680,12 @@
         <p class="footer-privacy-text" style="margin-top: 0.5rem;" data-i18n="footer.privacy_notice">
           <strong>Примітка про конфіденційність:</strong> Контактні дані, надіслані через форми на цьому сайті, використовуються виключно для прямої комунікації щодо тестування прототипу переробки відходів та зразків протеїну. Дані не передаються третім особам і не використовуються для сторонньої реклами.
         </p>
+
+        <!-- Image Credits Block -->
+        <div class="image-credits-wrap">
+          <strong>Джерела зображень та ліцензії:</strong>
+          Векторні ілюстрації циклу, відходів та продуктів — авторська розробка EcoFly (SVG). Наукові світлини біології Hermetia illucens: фото личинок препуп — <a href="https://commons.wikimedia.org/wiki/File:Black_soldier_fly_larvae.jpg" target="_blank" rel="noopener" style="text-decoration: underline;">Martin Cooper</a> (ліцензія <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener" style="text-decoration: underline;">CC BY 2.0</a>); фото дорослої особини — <a href="https://commons.wikimedia.org/wiki/File:Hermetia_illucens_-_Judy_Gallagher.jpg" target="_blank" rel="noopener" style="text-decoration: underline;">Judy Gallagher</a> (ліцензія <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener" style="text-decoration: underline;">CC BY 2.0</a>); зразок зоогумусу — архів прототипу EcoFly (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="text-decoration: underline;">CC BY 4.0</a>). Фотографії зберігаються у директорії <code>assets/photos/</code>.
+        </div>
       </div>
 
       <a href="#hero" class="back-to-top-btn" data-i18n="footer.back_to_top" aria-label="Повернутися нагору сторінки">
@@ -1337,7 +1697,7 @@
     </div>
   </footer>
 
-  <!-- Scripts: data.js (Constants, i18n dictionaries) then main.js -->
+  <!-- Scripts: data.js then main.js -->
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

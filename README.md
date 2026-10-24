@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Структура файлів
+## 1. Структура файлів проєкту
 
 ```
 ecofly/
@@ -21,14 +21,33 @@ ecofly/
 └── assets/
     ├── favicon.svg             # Векторна іконка сайту
     ├── og-image.png            # Open Graph зображення для прев'ю в соцмережах (1200×630 px)
-    └── ecofly-passport-sample.html # Статичний зразок офіційного бланка паспорта партії для друку та перегляду
+    ├── ecofly-passport-sample.html # Статичний зразок офіційного бланка паспорта партії для друку та перегляду
+    └── photos/                 # Фотоматеріали біології Hermetia illucens з відкритими ліцензіями
+        ├── bsf-larvae.svg      # Препупи BSF на субстраті (заміна на .jpg / .webp за бажанням)
+        ├── bsf-adult.svg       # Доросла муха BSF (імаго)
+        └── bsf-frass.svg       # Готовий органічний зоогумус
 ```
 
 ---
 
-## 2. Контакти засновника проєкту
+## 2. Як замінити або додати власні фото в `assets/photos/`
 
-Усі контактні посилання на сайті верифіковані:
+Зараз у каталозі `assets/photos/` розміщено елегантні нейтральні векторні біологічні ілюстрації-заглушки.  
+Якщо ви бажаєте замінити їх на реальні фотографії з Wikimedia Commons або Unsplash:
+1. Завантажте фото у високій якості та покладіть у теку `assets/photos/` (наприклад, `bsf-larvae.jpg`, `bsf-adult.jpg`).
+2. У файлі `index.html` у секції `#photos` змініть розширення у тегах `<img>`:
+   ```html
+   <img src="assets/photos/bsf-larvae.jpg" alt="..." class="photo-img" loading="lazy">
+   ```
+3. Підписи авторів та ліцензії вказані біля кожної картки та у блоці «Джерела зображень та ліцензії» у футері:
+   * **Личинки BSF:** автор Martin Cooper (Wikimedia Commons, ліцензія [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/));
+   * **Доросла муха (імаго):** автор Judy Gallagher (Wikimedia Commons, ліцензія [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/));
+   * **Зоогумус (фрас):** архів прототипу EcoFly ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
+
+---
+
+## 3. Контакти засновника проєкту
+
 * **Email:** [vladislavkolesnik26@gmail.com](mailto:vladislavkolesnik26@gmail.com)
 * **Telegram:** [@Prosto_kit_007](https://t.me/Prosto_kit_007)
 * **LinkedIn:** [www.linkedin.com/in/vladyslav-kolisnyk-87274430a](https://www.linkedin.com/in/vladyslav-kolisnyk-87274430a/)
@@ -36,7 +55,7 @@ ecofly/
 
 ---
 
-## 3. Наукові джерела та формулювання
+## 4. Наукові джерела та формулювання
 
 * **15–20% вихід живої біомаси личинок:** *Eawag/Sandec (2017), "Black Soldier Fly Biowaste Processing", Chapter 2*.
 * **60–85% скорочення сухої маси субстрату:** *Eawag/Sandec (2017), p. 18*.
@@ -50,7 +69,7 @@ ecofly/
 
 ---
 
-## 4. Підключення відправки заявок без власного бекенду
+## 5. Підключення відправки заявок без власного бекенду
 
 Форми містять:
 * Приховане поле-пастку `hp_company_url`;
@@ -65,7 +84,7 @@ ecofly/
 
 ---
 
-## 5. Безкоштовна публікація сайту в інтернеті
+## 6. Безкоштовна публікація сайту в інтернеті
 
 ### Варіант А: GitHub Pages (2 хвилини)
 1. Створіть репозиторій на [GitHub](https://github.com/), наприклад `ecofly-website`.

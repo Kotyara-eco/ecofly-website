@@ -147,20 +147,40 @@ button {
   }
 }
 
-/* Section Common */
+/* Section Common with Spacing & Alternating Backgrounds */
 .section {
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   border-bottom: 1px solid var(--border-subtle);
+  position: relative;
 }
 
-.section-alt {
+@media (min-width: 992px) {
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.section-primary {
+  background-color: var(--bg-primary);
+}
+
+.section-surface {
   background-color: var(--bg-surface);
 }
 
+.section-elevated {
+  background-color: var(--bg-surface-elevated);
+}
+
+.section-accent-tint {
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--accent-amber-bg) 50%, var(--bg-surface) 100%);
+}
+
 .section-header {
-  margin-bottom: 2.75rem;
-  max-width: 760px;
+  margin-bottom: 2.5rem;
+  max-width: 780px;
 }
 
 .section-badge {
@@ -580,7 +600,25 @@ button {
   color: var(--text-muted);
 }
 
-/* Hero Diagram Visual */
+/* Hero Visual Wrapper with Organic Backdrop */
+.hero-visual-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-organic-backdrop {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
 .hero-visual-card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -588,6 +626,8 @@ button {
   padding: 1.5rem;
   box-shadow: var(--shadow-md);
   position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .cycle-diagram-svg {
@@ -648,6 +688,7 @@ button {
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .step-card:hover {
@@ -656,16 +697,24 @@ button {
   border-color: var(--border-strong);
 }
 
-.step-icon-wrap {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  background-color: var(--brand-light);
-  color: var(--brand-forest);
+.step-illustration-wrap {
+  width: 100%;
+  height: 130px;
+  background-color: var(--bg-surface-elevated);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.15rem;
+  border: 1px solid var(--border-subtle);
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.step-illustration-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 110px;
 }
 
 .step-title {
@@ -680,8 +729,279 @@ button {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
+/* Details / Summary Collapsible Blocks */
+.details-collapse {
+  margin-top: auto;
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 0.65rem;
+}
+
+.details-summary {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--brand-forest);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.details-summary::-webkit-details-marker {
+  display: none;
+}
+
+.details-summary::before {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brand-forest);
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+details[open] .details-summary::before {
+  content: '−';
+}
+
+.details-summary:hover {
+  color: var(--brand-pine);
+}
+
+.details-body {
+  padding-top: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Large Section Feature Illustrations (Waste & Buyers) */
+.feature-illustration-wrap {
+  width: 100%;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-illustration-svg {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+}
+
+/* Biological Photos Section & Cards */
+.photos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .photos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.photo-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.photo-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background-color: var(--bg-surface-elevated);
+  overflow: hidden;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+}
+
+.photo-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.photo-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+  flex-grow: 1;
+}
+
+.photo-attribution {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.photo-license-link {
+  color: var(--brand-forest);
+  text-decoration: underline;
+}
+
+/* Stat Tiles with Large Typography */
+.stat-tiles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .stat-tiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stat-tiles-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-tile {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-tile-num {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--brand-forest);
+  line-height: 1.1;
+  margin-bottom: 0.45rem;
+}
+
+.stat-tile-num.amber {
+  color: var(--accent-amber);
+}
+
+.stat-tile-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.stat-tile-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+  flex-grow: 1;
+}
+
+.stat-tile-src {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.45rem;
+}
+
+/* Visual Status Table / Matrix */
+.visual-table-wrap {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.visual-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.visual-status-pill.done {
+  background-color: var(--brand-light);
+  color: var(--brand-forest);
+  border: 1px solid rgba(45, 106, 79, 0.25);
+}
+
+.visual-status-pill.progress {
+  background-color: var(--accent-amber-bg);
+  color: var(--accent-amber);
+  border: 1px solid rgba(154, 91, 0, 0.25);
+}
+
+.visual-status-pill.planned {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Image Credits Box in Footer */
+.image-credits-wrap {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .step-metric-tag {

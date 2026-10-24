@@ -316,6 +316,7 @@ const ECOFLY_DATA = {
     "contact.c2_desc": "Interested in feed protein, lipids, or zoohumus? Request sample data or discuss an LOI.",
     "contact.c3_title": "Partnership",
     "contact.c3_desc": "Greentech investments, research collaboration, or joint municipal pilot programs in Kyiv.",
+    "contact.city": "Kyiv, Ukraine",
 
     // Футер
     "footer.rights": "EcoFly. Circular bioeconomy prototype project in Kyiv.",

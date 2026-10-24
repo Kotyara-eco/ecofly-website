@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" fill="none">
+  <!-- Subtle dark background -->
+  <rect width="600" height="400" rx="12" fill="#14231A"/>
+  <rect width="600" height="400" rx="12" stroke="#2D6A4F" stroke-width="2"/>
+
+  <!-- Nutrient soil mound -->
+  <path d="M 60 350 Q 200 240 380 260 Q 500 280 540 350 Z" fill="#24301D" stroke="#9A5B00" stroke-width="2"/>
+  <path d="M 120 350 Q 260 270 420 290 Q 480 310 520 350 Z" fill="#1B2616"/>
+
+  <!-- Frass granules (NPK + Chitin rich) -->
+  <circle cx="180" cy="310" r="5" fill="#9A5B00"/>
+  <circle cx="210" cy="285" r="4.5" fill="#F4A236"/>
+  <circle cx="245" cy="305" r="6" fill="#784400"/>
+  <circle cx="290" cy="275" r="5" fill="#9A5B00"/>
+  <circle cx="330" cy="290" r="5.5" fill="#F4A236"/>
+  <circle cx="370" cy="280" r="4.5" fill="#784400"/>
+  <circle cx="410" cy="310" r="6" fill="#9A5B00"/>
+  <circle cx="450" cy="325" r="4" fill="#F4A236"/>
+
+  <!-- Healthy young green seedling growing out of the zoohumus -->
+  <g transform="translate(300, 275)">
+    <!-- Main stem -->
+    <path d="M 0 0 Q -5 -60 -2 -110" stroke="#5ECA95" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Left Leaf -->
+    <path d="M -2 -70 C -45 -95 -55 -60 -15 -50 Z" fill="#48B07D" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M -2 -70 Q -30 -75 -15 -50" stroke="#A6E6C5" stroke-width="1.2"/>
+    
+    <!-- Right Leaf -->
+    <path d="M -1 -90 C 45 -115 55 -80 15 -70 Z" fill="#48B07D" stroke="#74D4A7" stroke-width="2"/>
+    <path d="M -1 -90 Q 30 -95 15 -70" stroke="#A6E6C5" stroke-width="1.2"/>
+    
+    <!-- Top Young Sprout Leaf -->
+    <path d="M -2 -110 C -15 -140 15 -140 0 -110 Z" fill="#74D4A7" stroke="#A6E6C5" stroke-width="1.8"/>
+  </g>
+
+  <!-- Golden nutrient glow particles -->
+  <circle cx="260" cy="180" r="3.5" fill="#F4A236" opacity="0.8"/>
+  <circle cx="340" cy="160" r="4" fill="#5ECA95" opacity="0.8"/>
+  <circle cx="220" cy="230" r="2.5" fill="#F4A236" opacity="0.7"/>
+  <circle cx="380" cy="210" r="3" fill="#5ECA95" opacity="0.7"/>
+
+  <!-- Badge in top right corner -->
+  <rect x="360" y="24" width="215" height="30" rx="6" fill="#1C3024" stroke="#3A5745" stroke-width="1"/>
+  <text x="467" y="43" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#F4A236">ЗООГУМУС (ФРАС BSF)</text>
+
+  <text x="40" y="55" font-family="'Manrope', sans-serif" font-size="18" font-weight="700" fill="#EEF5F0">Органічне добриво</text>
+  <text x="40" y="80" font-family="'Golos Text', sans-serif" font-size="13" fill="#A6BCAD">Збагачений хітином субстрат для регенерації ґрунту</text>
+</svg>
