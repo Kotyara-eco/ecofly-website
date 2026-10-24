@@ -1,491 +1,333 @@
-/**
- * EcoFly Kyiv — Main Client Application
- * Vanilla JS • No external runtime dependencies • Accessible & Resilient
- */
+/* EcoFly — поведінка сторінки. Налаштування (форми, контакти, підписи до фото) лежать у js/config.js */
+(function () {
+  "use strict";
+  var CFG = window.ECOFLY_CONFIG || {};
+  var FORMS = CFG.forms || {};
+  var $ = function (id) { return document.getElementById(id); };
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  var reduce = false;
+  try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Часова мітка завантаження для захисту від спаму (мінімум 8 секунд)
-  const PAGE_LOAD_TIME = Date.now();
-  const MIN_SUBMISSION_DELAY_MS = 8000;
+  /* ---------- мова ---------- */
+  var LANG = "uk";
+  try { var sl = localStorage.getItem("ecofly_lang"); if (sl === "en" || sl === "uk") LANG = sl; } catch (e) {}
+  function L(uk, en) { return LANG === "en" ? en : uk; }
+  var locale = function () { return LANG === "en" ? "en-GB" : "uk-UA"; };
+  function fmt(n, d) { return Number(n).toLocaleString(locale(), { maximumFractionDigits: d == null ? 1 : d }); }
 
-  /* ==========================================================================
-     1. Тема оформлення (Світла / Темна)
-     ========================================================================== */
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  const themeIconSun = document.getElementById('theme-icon-sun');
-  const themeIconMoon = document.getElementById('theme-icon-moon');
+  var PHOTOS = [
+    ["hero-larvae", "Макрофото личинок чорної левової мухи", "Macro photo of black soldier fly larvae", "Фото личинок", "Larvae photo"],
+    ["adult-fly", "Доросла чорна левова муха", "Adult black soldier fly", "Доросла муха", "Adult fly"],
+    ["food-waste", "Органічні рослинні відходи", "Organic plant waste", "Органічні відходи", "Organic waste"],
+    ["poultry", "Птахи на фермі", "Poultry on a farm", "Птахи", "Poultry"],
+    ["aquaculture", "Риба, аквакультура", "Fish, aquaculture", "Аквакультура", "Aquaculture"],
+    ["pet", "Домашня тварина", "A pet animal", "Домашня тварина", "Pet"],
+    ["soil-garden", "Ґрунт і город", "Soil and garden", "Ґрунт і город", "Soil and garden"],
+    ["kyiv", "Київ", "Kyiv", "Київ", "Kyiv"],
+    ["founder", "Засновник проєкту", "Project founder", "Засновник", "Founder"]
+  ];
+  var loaded = {}; // key -> файл
 
-  function getSavedTheme() {
-    try {
-      const saved = localStorage.getItem('ecofly_theme');
-      if (saved) return saved;
-    } catch (e) {
-      // Ігноруємо обмеження доступу до localStorage
-    }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-  }
-
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      if (themeIconSun) themeIconSun.style.display = 'block';
-      if (themeIconMoon) themeIconMoon.style.display = 'none';
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      if (themeIconSun) themeIconSun.style.display = 'none';
-      if (themeIconMoon) themeIconMoon.style.display = 'block';
-    }
-    try {
-      localStorage.setItem('ecofly_theme', theme);
-    } catch (e) {}
-  }
-
-  // Ініціалізація теми
-  applyTheme(getSavedTheme());
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+  function swap(root) {
+    $$("[data-en]", root).forEach(function (el) {
+      if (!el.hasAttribute("data-uk")) el.setAttribute("data-uk", el.innerHTML);
+      el.innerHTML = LANG === "en" ? el.getAttribute("data-en") : el.getAttribute("data-uk");
+    });
+    $$("[data-en-aria]").forEach(function (el) {
+      if (!el.hasAttribute("data-uk-aria")) el.setAttribute("data-uk-aria", el.getAttribute("aria-label") || "");
+      el.setAttribute("aria-label", LANG === "en" ? el.getAttribute("data-en-aria") : el.getAttribute("data-uk-aria"));
+    });
+    $$("[data-en-l]").forEach(function (el) {
+      if (!el.hasAttribute("data-uk-l")) el.setAttribute("data-uk-l", el.getAttribute("data-l") || "");
+      el.setAttribute("data-l", LANG === "en" ? el.getAttribute("data-en-l") : el.getAttribute("data-uk-l"));
     });
   }
 
-  /* ==========================================================================
-     2. Перемикач мов (UA / EN)
-     ========================================================================== */
-  const langToggleBtn = document.getElementById('lang-toggle-btn');
-  const langLabel = document.getElementById('lang-label');
-  let currentLang = 'ua';
-
-  function getSavedLang() {
-    try {
-      const saved = localStorage.getItem('ecofly_lang');
-      if (saved === 'en' || saved === 'ua') return saved;
-    } catch (e) {}
-    return 'ua';
+  /* ---------- тема ---------- */
+  try { var st = localStorage.getItem("ecofly_theme"); if (st === "light" || st === "dark") document.documentElement.setAttribute("data-theme", st); } catch (e) {}
+  function isDark() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t) return t === "dark";
+    try { return !window.matchMedia("(prefers-color-scheme: light)").matches; } catch (e) { return true; }
   }
-
-  function setLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'uk');
-
-    if (langLabel) {
-      langLabel.textContent = lang === 'en' ? 'UA' : 'EN';
-    }
-
-    try {
-      localStorage.setItem('ecofly_lang', lang);
-    } catch (e) {}
-
-    // Оновлення перекладів на сторінці
-    if (window.ECOFLY_DATA && window.ECOFLY_DATA.EN_TRANSLATIONS) {
-      const trans = window.ECOFLY_DATA.EN_TRANSLATIONS;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (lang === 'en') {
-          if (!el.hasAttribute('data-original-ua')) {
-            el.setAttribute('data-original-ua', el.innerHTML);
-          }
-          if (trans[key]) {
-            el.innerHTML = trans[key];
-          }
-        } else {
-          if (el.hasAttribute('data-original-ua')) {
-            el.innerHTML = el.getAttribute('data-original-ua');
-          }
-        }
-      });
-
-      // Оновлення placeholder для полів введення
-      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-        const key = el.getAttribute('data-i18n-ph');
-        if (lang === 'en') {
-          if (!el.hasAttribute('data-original-ph')) {
-            el.setAttribute('data-original-ph', el.getAttribute('placeholder') || '');
-          }
-          if (trans[key]) {
-            el.setAttribute('placeholder', trans[key]);
-          }
-        } else {
-          if (el.hasAttribute('data-original-ph')) {
-            el.setAttribute('placeholder', el.getAttribute('data-original-ph'));
-          }
-        }
-      });
-    }
-
-    // Оновлення списку районів
-    updateDistrictOptions(lang);
-    // Оновлення розрахунків калькулятора з поточними одиницями
-    updateCalculator();
-  }
-
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      setLanguage(currentLang === 'ua' ? 'en' : 'ua');
-    });
-  }
-
-  // Початкове застосування збереженої мови (якщо EN)
-  if (getSavedLang() === 'en') {
-    setLanguage('en');
-  }
-
-  /* ==========================================================================
-     3. Мобільне меню (Бургер з підтримкою клавіатури й Escape)
-     ========================================================================== */
-  const burgerBtn = document.getElementById('burger-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
-  function openMobileMenu() {
-    if (!mobileMenu || !burgerBtn) return;
-    mobileMenu.classList.add('open');
-    burgerBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMobileMenu() {
-    if (!mobileMenu || !burgerBtn) return;
-    mobileMenu.classList.remove('open');
-    burgerBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.contains('open');
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
-    });
-
-    // Закриття по кліку на посилання
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => closeMobileMenu());
-    });
-
-    // Закриття по клавіші Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        closeMobileMenu();
-        burgerBtn.focus();
-      }
-    });
-  }
-
-  /* ==========================================================================
-     4. Райони Києва (Список та інтерактивні чипи)
-     ========================================================================== */
-  const districtSelect = document.getElementById('waste-district-select');
-  const districtChipsContainer = document.getElementById('district-chips-container');
-
-  function updateDistrictOptions(lang) {
-    if (!districtSelect || !window.ECOFLY_DATA || !window.ECOFLY_DATA.KYIV_DISTRICTS) return;
-    const districts = window.ECOFLY_DATA.KYIV_DISTRICTS;
-    const currentVal = districtSelect.value;
-
-    districtSelect.innerHTML = `<option value="">${lang === 'en' ? '-- Select Kyiv District --' : '-- Оберіть район Києва --'}</option>`;
-
-    districts.forEach(d => {
-      const opt = document.createElement('option');
-      opt.value = d.id;
-      opt.textContent = lang === 'en' ? d.en : d.ua;
-      if (d.id === currentVal) opt.selected = true;
-      districtSelect.appendChild(opt);
-    });
-
-    // Оновлюємо також текст чипів
-    if (districtChipsContainer) {
-      districtChipsContainer.innerHTML = '';
-      districts.forEach(d => {
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = `district-chip ${d.id === currentVal ? 'selected' : ''}`;
-        chip.textContent = lang === 'en' ? d.en : d.ua;
-        chip.dataset.id = d.id;
-        chip.addEventListener('click', () => {
-          districtSelect.value = d.id;
-          document.querySelectorAll('.district-chip').forEach(c => c.classList.remove('selected'));
-          chip.classList.add('selected');
-        });
-        districtChipsContainer.appendChild(chip);
-      });
-    }
-  }
-
-  if (districtSelect) {
-    districtSelect.addEventListener('change', () => {
-      const val = districtSelect.value;
-      document.querySelectorAll('.district-chip').forEach(c => {
-        c.classList.toggle('selected', c.dataset.id === val);
-      });
-    });
-  }
-
-  updateDistrictOptions(currentLang);
-
-  /* ==========================================================================
-     5. Повзунок обсягу відходів у формі
-     ========================================================================== */
-  const wasteVolumeRange = document.getElementById('waste-volume-range');
-  const wasteVolumeBadge = document.getElementById('waste-volume-badge');
-
-  if (wasteVolumeRange && wasteVolumeBadge) {
-    wasteVolumeRange.addEventListener('input', () => {
-      const unit = currentLang === 'en' ? 'kg/day' : 'кг/добу';
-      wasteVolumeBadge.textContent = `${wasteVolumeRange.value} ${unit}`;
-    });
-  }
-
-  /* ==========================================================================
-     6. Калькулятор ефекту BSF (Eawag/Sandec константи з data.js)
-     ========================================================================== */
-  const calcKgInput = document.getElementById('calc-kg-input');
-  const calcKgSlider = document.getElementById('calc-kg-slider');
-  const calcDaysSelect = document.getElementById('calc-days-select');
-  const calcResLarvae = document.getElementById('calc-res-larvae');
-  const calcResLandfill = document.getElementById('calc-res-landfill');
-  const calcResArea = document.getElementById('calc-res-area');
-
-  function updateCalculator() {
-    if (!calcKgInput || !calcResLarvae || !calcResLandfill || !calcResArea) return;
-
-    const kgPerDay = parseFloat(calcKgInput.value) || 0;
-    const daysPerMonth = parseFloat(calcDaysSelect ? calcDaysSelect.value : 30) || 30;
-
-    const C = window.ECOFLY_DATA ? window.ECOFLY_DATA.CALCULATION : {
-      LARVAE_CONVERSION_MIN: 0.15,
-      LARVAE_CONVERSION_MAX: 0.20,
-      SPACE_KG_PER_M2_PER_DAY: 31.25
-    };
-
-    // Загальна маса відходів за місяць (кг)
-    const monthlyTotalKg = kgPerDay * daysPerMonth;
-
-    // 15–20% свіжих личинок від вологої маси
-    const larvaeMin = Math.round(monthlyTotalKg * C.LARVAE_CONVERSION_MIN);
-    const larvaeMax = Math.round(monthlyTotalKg * C.LARVAE_CONVERSION_MAX);
-
-    // Тонни, що не потраплять на полігон
-    const landfillTons = (monthlyTotalKg / 1000).toFixed(2);
-
-    // Необхідна площа культиватора (31.25 кг/м²/добу)
-    const areaM2 = (kgPerDay / C.SPACE_KG_PER_M2_PER_DAY).toFixed(1);
-
-    // Відображення
-    const kgWord = currentLang === 'en' ? 'kg' : 'кг';
-    const tonWord = currentLang === 'en' ? 't' : 'т';
-    const m2Word = currentLang === 'en' ? 'm²' : 'м²';
-
-    calcResLarvae.textContent = `${larvaeMin.toLocaleString()} – ${larvaeMax.toLocaleString()} ${kgWord}`;
-    calcResLandfill.textContent = `${landfillTons} ${tonWord}`;
-    calcResArea.textContent = `~${areaM2} ${m2Word}`;
-
-    // Вхідне значення поруч із кожним результатом (кг/добу) та підпис шкали «було → стало»
-    const perDay = currentLang === 'en' ? 'kg/day' : 'кг/добу';
-    document.querySelectorAll('.js-calc-in').forEach(el => {
-      el.textContent = `${kgPerDay.toLocaleString()} ${perDay}`;
-    });
-    const beforeLbl = document.getElementById('calc-bar-before-lbl');
-    if (beforeLbl) {
-      beforeLbl.textContent = `${monthlyTotalKg.toLocaleString()} ${kgWord}/${currentLang === 'en' ? 'month' : 'міс'}`;
-    }
-  }
-
-  if (calcKgSlider && calcKgInput) {
-    calcKgSlider.addEventListener('input', () => {
-      calcKgInput.value = calcKgSlider.value;
-      updateCalculator();
-    });
-
-    calcKgInput.addEventListener('input', () => {
-      calcKgSlider.value = calcKgInput.value;
-      updateCalculator();
-    });
-  }
-
-  if (calcDaysSelect) {
-    calcDaysSelect.addEventListener('change', updateCalculator);
-  }
-
-  updateCalculator();
-
-  /* ==========================================================================
-     7. Валідація форм, захист від спаму та копіювання заявки
-     ========================================================================== */
-  function setupFormHandling(formId, copyBtnId, statusId, formType) {
-    const form = document.getElementById(formId);
-    const copyBtn = document.getElementById(copyBtnId);
-    const statusMsg = document.getElementById(statusId);
-
-    function showStatus(text, type = 'error') {
-      if (!statusMsg) return;
-      statusMsg.className = `form-status-msg active ${type}`;
-      statusMsg.textContent = text;
-      statusMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function hideStatus() {
-      if (!statusMsg) return;
-      statusMsg.className = 'form-status-msg';
-      statusMsg.textContent = '';
-    }
-
-    function checkSpamProtection() {
-      // Honeypot перевірка
-      const hp = form.querySelector('input[name="hp_company_url"]');
-      if (hp && hp.value.trim() !== '') {
-        console.warn('Bot detected by honeypot');
-        return false;
-      }
-
-      // Перевірка 8-секундної затримки
-      const elapsed = Date.now() - PAGE_LOAD_TIME;
-      if (elapsed < MIN_SUBMISSION_DELAY_MS) {
-        const msg = currentLang === 'en'
-          ? 'Anti-spam delay: please wait a few seconds before submitting.'
-          : 'Захист від спаму: зачекайте кілька секунд перед надсиланням заявки.';
-        showStatus(msg, 'error');
-        return false;
-      }
-      return true;
-    }
-
-    function checkConsent() {
-      const consent = form.querySelector('input[name="consent"]');
-      if (consent && !consent.checked) {
-        const msg = currentLang === 'en'
-          ? 'Please confirm your consent to personal data processing.'
-          : 'Будь ласка, підтвердіть згоду на обробку контактних даних.';
-        showStatus(msg, 'error');
-        return false;
-      }
-      return true;
-    }
-
-    function serializeFormData() {
-      const formData = new FormData(form);
-      const lines = [];
-      const title = formType === 'waste'
-        ? (currentLang === 'en' ? 'EcoFly Waste Collection Application' : 'Заявка на забір відходів — EcoFly')
-        : (currentLang === 'en' ? 'EcoFly Product Buyer Inquiry' : 'Запит покупця продукції — EcoFly');
-
-      lines.push(`=== ${title} ===`);
-      formData.forEach((value, key) => {
-        if (key === 'hp_company_url') return;
-        lines.push(`${key}: ${value}`);
-      });
-      lines.push(`Час створення: ${new Date().toLocaleString()}`);
-      lines.push(`===============================`);
-      return lines.join('\n');
-    }
-
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        hideStatus();
-
-        if (!checkSpamProtection()) return;
-        if (!checkConsent()) return;
-
-        // Перевірка наявності реального action endpoint
-        const action = form.getAttribute('action');
-        if (!action || action === '#' || action.includes('[ПОСИЛАННЯ НА ФОРМУ]')) {
-          const textData = serializeFormData();
-          navigator.clipboard.writeText(textData).then(() => {
-            const successMsg = currentLang === 'en'
-              ? 'Request prepared! Data copied to clipboard. You can paste and send it directly via Telegram or Email.'
-              : 'Заявку підготовлено! Дані скопійовано в буфер обміну. Ви можете надіслати їх у наш Telegram чи на Email.';
-            showStatus(successMsg, 'success');
-          }).catch(() => {
-            const demoMsg = currentLang === 'en'
-              ? 'Thank you! Your request has been validated. [FORM LINK]'
-              : 'Дякуємо! Ваша заявка пройшла валідацію. [ПОСИЛАННЯ НА ФОРМУ]';
-            showStatus(demoMsg, 'success');
-          });
-          return;
-        }
-
-        // Якщо дійсний endpoint налаштовано (Formspree/Google Forms)
-        form.submit();
-      });
-    }
-
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        hideStatus();
-        if (!checkConsent()) return;
-
-        const textData = serializeFormData();
-        navigator.clipboard.writeText(textData).then(() => {
-          const successMsg = currentLang === 'en'
-            ? 'Application copied to clipboard! You can paste it into Telegram or Email.'
-            : 'Заявку успішно скопійовано в буфер обміну! Вставте її в Telegram або лист.';
-          showStatus(successMsg, 'success');
-        }).catch(() => {
-          showStatus(currentLang === 'en' ? 'Failed to copy automatically.' : 'Не вдалося скопіювати автоматично.', 'error');
-        });
-      });
-    }
-  }
-
-  setupFormHandling('waste-form', 'waste-copy-btn', 'waste-form-status', 'waste');
-  setupFormHandling('buyers-form', 'buyers-copy-btn', 'buyers-form-status', 'buyers');
-
-  /* ==========================================================================
-     8. FAQ Акордеон
-     ========================================================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const trigger = item.querySelector('.faq-trigger');
-    if (trigger) {
-      trigger.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        faqItems.forEach(other => {
-          other.classList.remove('open');
-          const otherTrigger = other.querySelector('.faq-trigger');
-          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          item.classList.add('open');
-          trigger.setAttribute('aria-expanded', 'true');
-        }
-      });
-    }
+  $("themeBtn").addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("ecofly_theme", next); } catch (e) {}
   });
 
-  /* ==========================================================================
-     9. Плавне підсвічування активних посилань меню при скролі
-     ========================================================================== */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.main-nav .nav-link');
+  /* ---------- меню ---------- */
+  var menu = $("menu"), burger = $("burger");
+  function closeMenu() { menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }
+  burger.addEventListener("click", function () {
+    var open = menu.classList.toggle("open");
+    burger.setAttribute("aria-expanded", String(open));
+  });
+  $$("a", menu).forEach(function (a) { a.addEventListener("click", closeMenu); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
 
-  function highlightNavOnScroll() {
-    const scrollPos = window.scrollY + 120;
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      const id = sec.getAttribute('id');
-      if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-        });
+  if ("IntersectionObserver" in window) {
+    var links = {};
+    $$("a", menu).forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          $$("a", menu).forEach(function (a) { a.classList.remove("on"); });
+          if (links[e.target.id]) links[e.target.id].classList.add("on");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(links).forEach(function (id) { var s = $(id); if (s) spy.observe(s); });
+  }
+
+  /* ---------- поява блоків і лічильники ---------- */
+  function animateCount(el) {
+    var txt = el.getAttribute("data-final") || el.textContent;
+    el.setAttribute("data-final", txt);
+    if (reduce) return;
+    var start = performance.now(), dur = 1100;
+    function step(now) {
+      var p = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = txt.replace(/\d+(?:[.,]\d+)?/g, function (m) {
+        var dec = (m.split(/[.,]/)[1] || "").length, sep = m.indexOf(",") > -1 ? "," : ".";
+        return (parseFloat(m.replace(",", ".")) * e).toFixed(dec).replace(".", sep);
+      });
+      if (p < 1) requestAnimationFrame(step); else el.textContent = txt;
+    }
+    requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window && !reduce) {
+    var rv = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    $$(".rv").forEach(function (n) { rv.observe(n); });
+  } else { $$(".rv").forEach(function (n) { n.classList.add("in"); }); }
+  $$(".count").forEach(animateCount);
+
+  /* ---------- фото: підхоплюються автоматично, якщо файл лежить у assets/photos ---------- */
+  var EXTS = ["webp", "jpg", "jpeg", "png"];
+  function probe(key, i) {
+    if (i >= EXTS.length) return;
+    var src = "assets/photos/" + key + "." + EXTS[i], img = new Image();
+    img.onload = function () {
+      loaded[key] = src;
+      $$('[data-photo="' + key + '"]').forEach(function (el) {
+        el.style.setProperty("--img", 'url("' + img.src + '")'); /* повна адреса: інакше шлях рахується від папки css/ */
+        el.classList.add("has-photo");
+        el.setAttribute("role", "img");
+      });
+      applyAlt(); buildCredits();
+    };
+    img.onerror = function () { probe(key, i + 1); };
+    img.src = src;
+  }
+  function applyAlt() {
+    PHOTOS.forEach(function (p) {
+      if (!loaded[p[0]]) return;
+      $$('[data-photo="' + p[0] + '"]').forEach(function (el) { el.setAttribute("aria-label", LANG === "en" ? p[2] : p[1]); });
+    });
+  }
+  function buildCredits() {
+    var ul = $("credits"), any = false;
+    $$("li.cr", ul).forEach(function (n) { n.remove(); });
+    PHOTOS.forEach(function (p) {
+      var key = p[0], c = (CFG.photos || {})[key];
+      if (!loaded[key]) return;
+      if (!c || !c.credit) { if (window.console) console.warn("EcoFly: для фото " + key + " не вказано автора й ліцензію в js/config.js"); return; }
+      var li = document.createElement("li"); li.className = "cr";
+      li.appendChild(document.createTextNode((LANG === "en" ? p[4] : p[3]) + ": "));
+      if (c.url) { var a = document.createElement("a"); a.href = c.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = c.credit; li.appendChild(a); }
+      else li.appendChild(document.createTextNode(c.credit));
+      if (key === "hero-larvae" || key === "kyiv") li.appendChild(document.createTextNode(LANG === "en" ? " (darkened for legibility)" : " (затемнено для читабельності тексту)"));
+      ul.appendChild(li); any = true;
+    });
+    $("noCredits").hidden = any;
+  }
+  PHOTOS.forEach(function (p) { probe(p[0], 0); });
+
+  /* ---------- райони Києва ---------- */
+  var DISTRICTS = [
+    ["svy", "Святошинський", "Sviatoshynskyi"], ["obo", "Оболонський", "Obolonskyi"], ["shv", "Шевченківський", "Shevchenkivskyi"],
+    ["pod", "Подільський", "Podilskyi"], ["sol", "Солом'янський", "Solomianskyi"], ["pech", "Печерський", "Pecherskyi"],
+    ["gol", "Голосіївський", "Holosiivskyi"], ["des", "Деснянський", "Desnianskyi"], ["dnp", "Дніпровський", "Dniprovskyi"], ["dar", "Дарницький", "Darnytskyi"]
+  ];
+  var district = "";
+  function dname(k) { if (k === "other") return L("Інше (поза Києвом)", "Other (outside Kyiv)"); for (var i = 0; i < DISTRICTS.length; i++) if (DISTRICTS[i][0] === k) return L(DISTRICTS[i][1], DISTRICTS[i][2]); return ""; }
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function buildDistricts() {
+    var sel = $("distSel"); sel.textContent = "";
+    var o0 = el("option", null, L("— оберіть район —", "— choose a district —")); o0.value = ""; sel.appendChild(o0);
+    DISTRICTS.map(function (d) { return d[0]; }).concat(["other"]).forEach(function (k) { var o = el("option", null, dname(k)); o.value = k; sel.appendChild(o); });
+    sel.value = district;
+    var host = $("distPick"); host.textContent = "";
+    var map = el("div", "kmap");
+    DISTRICTS.forEach(function (d) {
+      var b = el("button", "kd", dname(d[0])); b.type = "button"; b.dataset.k = d[0]; b.style.gridArea = d[0]; b.setAttribute("aria-pressed", "false");
+      map.appendChild(b);
+    });
+    var river = el("div", "river", L("Дніпро", "Dnipro")); river.setAttribute("aria-hidden", "true"); map.appendChild(river);
+    host.appendChild(map);
+    var other = el("button", "kother", dname("other")); other.type = "button"; other.dataset.k = "other"; other.setAttribute("aria-pressed", "false"); host.appendChild(other);
+    markDistrict();
+  }
+  function markDistrict() {
+    $$("button[data-k]", $("distPick")).forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.k === district)); });
+    $("distSel").value = district;
+  }
+  $("distPick").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-k]"); if (!b) return;
+    district = district === b.dataset.k ? "" : b.dataset.k; markDistrict();
+  });
+  $("distSel").addEventListener("change", function () { district = $("distSel").value; markDistrict(); });
+
+  /* ---------- слайдер обсягу та калькулятор ---------- */
+  function wVolOut() { $("wVolOut").textContent = fmt($("wVol").value, 0) + L(" кг", " kg"); }
+  $("wVol").addEventListener("input", wVolOut);
+  function recalc() {
+    var v = Math.max(1, Number($("cVol").value) || 0), d = Number($("cDays").value) || 30, total = v * d;
+    var lo = total * 0.15, hi = total * 0.20;
+    var kg = L(" кг", " kg"), t = L(" т", " t"), m2 = L(" м²", " m²");
+    $("rLarv").textContent = fmt(lo, 0) + "–" + fmt(hi, 0) + kg;
+    $("rTons").textContent = fmt(total / 1000, 1) + t;
+    $("rArea").textContent = "≈ " + fmt(v / 31.25, 1) + m2;
+    var inp = L("Вхід: ", "Input: ") + fmt(v, 0) + L(" кг/добу × ", " kg/day × ") + d + L(" днів", " days");
+    $("rIn1").textContent = inp;
+    $("rIn2").textContent = L("Вхід: ", "Input: ") + fmt(v, 0) + L(" кг/добу × ", " kg/day × ") + d + L(" днів", " days");
+  }
+  $("cVol").addEventListener("input", recalc);
+  $("cDays").addEventListener("change", recalc);
+
+  /* ---------- контакти, засновник, джерело ---------- */
+  function buildContacts() {
+    var C = CFG.contacts || {}, host = $("contacts"); host.textContent = "";
+    if (C.email) { var a = el("a", null, C.email); a.href = "mailto:" + C.email; host.appendChild(a); }
+    if (C.telegram) { var t = el("a", null, "Telegram @" + C.telegram.replace(/^@/, "")); t.href = "https://t.me/" + C.telegram.replace(/^@/, ""); t.target = "_blank"; t.rel = "noopener"; host.appendChild(t); }
+    if (C.linkedin) { var l = el("a", null, "LinkedIn"); l.href = C.linkedin; l.target = "_blank"; l.rel = "noopener"; host.appendChild(l); }
+    host.hidden = !host.children.length;
+  }
+  function buildFounder() {
+    var F = CFG.founder || {};
+    if (F.name) $("fName").textContent = F.name;
+    var bio = LANG === "en" ? (F.bio_en || F.bio_uk) : (F.bio_uk || F.bio_en);
+    $("fBio").textContent = bio || ""; $("fBio").hidden = !bio;
+  }
+  function buildOrgSrc() {
+    var s = (CFG.sources || {}).organics, host = $("orgSrc"); host.textContent = "";
+    if (s) { var a = el("a", null, L("джерело", "source")); a.href = s; a.target = "_blank"; a.rel = "noopener"; host.appendChild(a); }
+    else host.textContent = L("за оцінками дослідників", "according to researchers' estimates");
+  }
+
+  /* ---------- форми ---------- */
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      function fallback() {
+        try {
+          var ta = el("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select(); var ok = document.execCommand("copy"); ta.remove(); ok ? resolve() : reject();
+        } catch (e) { reject(e); }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(resolve, fallback); else fallback();
+    });
+  }
+  function clean(s, n) { return String(s == null ? "" : s).replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, n || 200); }
+  function yn(v) { return v ? "так" : "ні"; }
+
+  var FORMDEF = {
+    fWaste: { msg: "mWaste", key: "waste", title: "EcoFly: заявка на забір відходів", fields: function (f) {
+      var type = f.querySelector("input[name=type]:checked");
+      return [["Тип відходів", type ? type.value : ""], ["Обсяг на добу, кг", f.elements.vol.value], ["Періодичність", f.elements.freq.value],
+        ["Район Києва", (function () { for (var i = 0; i < DISTRICTS.length; i++) if (DISTRICTS[i][0] === district) return DISTRICTS[i][1]; return district === "other" ? "Інше (поза Києвом)" : ""; })()],
+        ["Контактна особа та заклад", f.elements.name.value], ["Телефон або Telegram", f.elements.contact.value],
+        ["Потрібен паспорт партії та акт", yn(f.elements.needDoc.checked)], ["Передати зоогумус школам і садам", yn(f.elements.gift.checked)], ["Згода на обробку даних", yn(f.elements.consent.checked)]];
+    }, required: function (f) { return [f.elements.name, f.elements.contact, $("distSel"), f.elements.consent]; } },
+    fBuyers: { msg: "mBuyers", key: "buyers", title: "EcoFly: запит покупця протеїну", fields: function (f) {
+      return [["Напрям", f.elements.segment.value], ["Потреба на місяць, кг", f.elements.volume.value], ["Поточне джерело білка й ціна, грн/т", f.elements.current.value],
+        ["Контактна особа та господарство", f.elements.name.value], ["Телефон або e-mail", f.elements.contact.value],
+        ["Готовий обговорити LOI", yn(f.elements.loi.checked)], ["Згода на обробку даних", yn(f.elements.consent.checked)]];
+    }, required: function (f) { return [f.elements.volume, f.elements.name, f.elements.contact, f.elements.consent]; } },
+    fPartner: { msg: "mPartner", key: "partner", title: "EcoFly: повідомлення партнера чи інвестора", fields: function (f) {
+      return [["Ім'я або організація", f.elements.name.value], ["Телефон або e-mail", f.elements.contact.value], ["Повідомлення", f.elements.message.value],
+        ["Згода на обробку даних", yn(f.elements.consent.checked)]];
+    }, required: function (f) { return [f.elements.name, f.elements.contact, f.elements.consent]; } }
+  };
+
+  function initForm(id) {
+    var def = FORMDEF[id], f = $(id), msg = $(def.msg), t0 = 0;
+    function show(kind, text) { msg.className = "msg " + kind; msg.textContent = text; msg.hidden = false; }
+    function startTimer() { if (!t0) t0 = Date.now(); }
+    f.addEventListener("input", startTimer); f.addEventListener("focusin", startTimer);
+    function build() {
+      var lines = [def.title];
+      def.fields(f).forEach(function (r) { var v = clean(r[1], 1200); if (v) lines.push(r[0] + ": " + v); });
+      return lines.join("\n");
+    }
+    function validate() {
+      var bad = [];
+      def.required(f).forEach(function (n) {
+        var ok = n.type === "checkbox" ? n.checked : clean(n.value).length > 0;
+        if (n.name === "contact" && ok) ok = clean(n.value).length >= 5;
+        if (n.name === "volume" && ok) ok = Number(n.value) > 0;
+        n.setAttribute("aria-invalid", ok ? "false" : "true"); if (!ok) bad.push(n);
+      });
+      if (bad.length) { show("err", L("Заповніть обов'язкові поля, позначені *, і поставте згоду на обробку даних.", "Please fill in the required fields marked * and tick the consent box.")); bad[0].focus(); return false; }
+      return true;
+    }
+    f.querySelector("[data-copy]").addEventListener("click", function () {
+      copyText(build()).then(function () { show("ok", L("Текст скопійовано в буфер обміну.", "The text has been copied to the clipboard.")); },
+        function () { show("err", L("Не вдалося скопіювати автоматично. Виділіть текст у полях і скопіюйте вручну.", "Could not copy automatically. Please copy the text manually.")); });
+    });
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (f.elements._gotcha && f.elements._gotcha.value) { show("ok", L("Дякуємо!", "Thank you!")); return; }
+      if (!validate()) return;
+      if (!t0 || Date.now() - t0 < 8000) { show("err", L("Забагато швидкості: перевірте поля й спробуйте ще раз за кілька секунд.", "That was very fast: check the fields and try again in a few seconds.")); return; }
+      var cfg = FORMS[def.key] || {}, text = build(), btn = f.querySelector("button[type=submit]");
+      if (cfg.endpoint) {
+        var body = { _subject: def.title }; def.fields(f).forEach(function (r) { body[r[0]] = clean(r[1], 1200); });
+        btn.disabled = true;
+        fetch(cfg.endpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(body) })
+          .then(function (r) { if (!r.ok) throw new Error("http " + r.status); show("ok", L("Дякуємо! Заявку надіслано, ми зв'яжемося з вами.", "Thank you! Your request has been sent and we will get in touch.")); f.reset(); district = ""; markDistrict(); wVolOut(); t0 = 0; })
+          .catch(function () { copyText(text).then(function () {}, function () {}); show("err", L("Не вдалося надіслати. Текст заявки скопійовано, надішліть його нам напряму.", "Sending failed. The text has been copied, please send it to us directly.")); })
+          .then(function () { btn.disabled = false; });
+      } else if (cfg.googleForm) {
+        copyText(text).then(function () {}, function () {});
+        window.open(cfg.googleForm, "_blank", "noopener");
+        show("ok", L("Відкрили форму в новій вкладці. Текст заявки скопійовано, вставте його у відповідне поле.", "The form opened in a new tab. The text has been copied, paste it into the matching field."));
+      } else {
+        copyText(text).then(function () { show("ok", L("Прийом заявок на сайті ще налаштовується. Текст заявки скопійовано, надішліть його нам напряму.", "Online requests are still being set up. The text has been copied, please send it to us directly.")); },
+          function () { show("err", L("Прийом заявок на сайті ще налаштовується. Скопіюйте текст вручну.", "Online requests are still being set up. Please copy the text manually.")); });
       }
     });
   }
+  Object.keys(FORMDEF).forEach(initForm);
 
-  window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
+  /* ---------- друк зразка паспорта ---------- */
+  $("printPass").addEventListener("click", function () {
+    document.body.classList.add("print-passport");
+    var done = function () { document.body.classList.remove("print-passport"); window.removeEventListener("afterprint", done); };
+    window.addEventListener("afterprint", done);
+    try { window.print(); } catch (e) { done(); }
+    setTimeout(done, 4000);
+  });
 
-  /* ==========================================================================
-     10. Автоматичний рік у футері
-     ========================================================================== */
-  const yearEl = document.getElementById('footer-year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+  /* ---------- мова: перемикач і повне оновлення ---------- */
+  var titles = {
+    uk: ["EcoFly — переробка органічних відходів личинками BSF, Київ", "EcoFly: прототип сервісу циркулярної економіки в Києві. Вологі рослинні відходи → личинки чорної левової мухи → протеїн, жир і зоогумус."],
+    en: ["EcoFly — organic waste bioconversion with BSF larvae, Kyiv", "EcoFly: a prototype circular-economy service in Kyiv. Wet plant waste → black soldier fly larvae → protein, fat and frass fertiliser."]
+  };
+  function refresh() {
+    swap(document);
+    document.documentElement.lang = LANG;
+    document.title = titles[LANG][0];
+    var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", titles[LANG][1]);
+    $("langBtn").textContent = LANG === "en" ? "UA" : "EN";
+    $("fWaste") && ["mWaste", "mBuyers", "mPartner"].forEach(function (i) { $(i).hidden = true; });
+    buildDistricts(); wVolOut(); recalc(); buildContacts(); buildFounder(); buildOrgSrc(); applyAlt(); buildCredits();
   }
-});
+  $("langBtn").addEventListener("click", function () {
+    LANG = LANG === "en" ? "uk" : "en";
+    try { localStorage.setItem("ecofly_lang", LANG); } catch (e) {}
+    refresh();
+  });
+  refresh();
+})();
