@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoFly — Зразок паспорта партії (Batch Passport Specimen)</title>
+  <title>EcoFly — Зразок паспорта партії (ЗРАЗОК / SPECIMEN)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
@@ -84,12 +84,37 @@
       font-family: 'Manrope', sans-serif;
       font-size: 5rem;
       font-weight: 800;
-      color: rgba(154, 91, 0, 0.07);
+      color: rgba(154, 91, 0, 0.08);
       pointer-events: none;
       user-select: none;
       white-space: nowrap;
       text-transform: uppercase;
       letter-spacing: 0.2em;
+    }
+    .watermark-corner {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: #FEF7ED;
+      color: var(--accent-amber);
+      border: 1px dashed var(--accent-amber);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .watermark-bottom {
+      position: absolute;
+      bottom: 12px;
+      right: 25px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+      opacity: 0.8;
+      text-transform: uppercase;
     }
     .doc-header {
       display: flex;
@@ -144,15 +169,15 @@
     }
     .specimen-pill {
       display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: 0.8rem;
+      font-weight: 800;
       text-transform: uppercase;
       background: #FEF7ED;
       color: var(--accent-amber);
-      padding: 0.2rem 0.6rem;
+      padding: 0.25rem 0.65rem;
       border-radius: 4px;
       margin-top: 0.35rem;
-      border: 1px solid rgba(154, 91, 0, 0.2);
+      border: 1px solid rgba(154, 91, 0, 0.3);
     }
     h1.doc-title {
       font-family: 'Manrope', sans-serif;
@@ -242,23 +267,24 @@
       line-height: 1.45;
     }
     .stamp-box {
-      border: 2px dashed var(--brand-forest);
+      border: 2px dashed var(--accent-amber);
       border-radius: 8px;
       padding: 0.75rem 1.25rem;
       text-align: center;
-      background: #F0F8F3;
+      background: #FEF7ED;
     }
     .stamp-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--brand-pine);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent-amber);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
     }
     .stamp-sub {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
       color: var(--brand-forest);
+      font-weight: 600;
     }
 
     @media print {
@@ -288,6 +314,8 @@
 
     <div class="passport-card">
       <div class="watermark">ЗРАЗОК • SPECIMEN</div>
+      <div class="watermark-corner">[ ЗРАЗОК ДОКУМЕНТА ]</div>
+      <div class="watermark-bottom">[ ЗРАЗОК ДЛЯ ОЗНАЙОМЛЕННЯ ]</div>
 
       <header class="doc-header">
         <div class="logo-area">
@@ -300,23 +328,23 @@
           </div>
           <div>
             <div class="brand-title">EcoFly Kyiv</div>
-            <div class="brand-sub">Circular Bioeconomy Pilot Project</div>
+            <div class="brand-sub">Проєкт на стадії прототипу</div>
           </div>
         </div>
 
         <div class="doc-meta">
           <div class="doc-id-badge">ECO-2026-0315-0042</div>
-          <div><span class="specimen-pill">Офіційний бланк партії (Зразок)</span></div>
+          <div><span class="specimen-pill">ЗРАЗОК • SPECIMEN</span></div>
         </div>
       </header>
 
-      <h1 class="doc-title">Паспорт переробки біовідходів методом біоконверсії BSF</h1>
-      <p class="doc-subtitle">Документ підтверджує прийом, санітарний контроль та повне циклічне перероблення партії рослинних органічних залишків личинками Hermetia illucens.</p>
+      <h1 class="doc-title">Паспорт переробки біовідходів методом біоконверсії BSF [ЗРАЗОК]</h1>
+      <p class="doc-subtitle">Зразок форми документа, що фіксує параметри партії рослинних залишків та результат біоконверсії личинками Hermetia illucens для цілей нефінансової звітності (ESG).</p>
 
       <div class="data-grid">
         <div class="data-row">
           <div class="data-label">Постачальник сировини</div>
-          <div class="data-value">ТОВ «Київська Крафтова Броварня» [Зразок]</div>
+          <div class="data-value">Приклад: харчове виробництво</div>
         </div>
         <div class="data-row">
           <div class="data-label">Район забору відходів</div>
@@ -355,7 +383,7 @@
               <td><strong>Жива біомаса личинок BSF</strong></td>
               <td class="mono">45.0 кг</td>
               <td class="mono">18.0% (діапазон 15–20%)</td>
-              <td>Лабораторні зразки протеїну / pet food</td>
+              <td>Лабораторні зразки / pet food</td>
             </tr>
             <tr>
               <td><strong>Зоогумус (фрас / дефрас)</strong></td>
@@ -367,7 +395,7 @@
               <td><strong>Скорочення обсягу субстрату</strong></td>
               <td class="mono">71.0%</td>
               <td class="mono">Eawag/Sandec (60–85%)</td>
-              <td>Запобігання вивезенню на полігон №5 м. Києва</td>
+              <td>Перероблено замість вивезення на полігон</td>
             </tr>
           </tbody>
         </table>
@@ -375,12 +403,12 @@
 
       <div class="verification-section">
         <div class="compliance-box">
-          <strong>Дотримання вимог безпеки:</strong> Субстрат перевірено на відповідність вимогам Регламенту (ЄС) 2017/893 (виключно рослинні залишки харчового виробництва; відсутність м'яса, риби, гною та синтетичних домішок). Дані внесені до внутрішнього реєстру пілотного проєкту EcoFly.
+          <strong>Дотримання вимог безпеки:</strong> Субстрат перевірено на відповідність вимогам Регламенту (ЄС) 2017/893 (виключно рослинні залишки харчового виробництва; відсутність м'яса, риби, гною). Цей документ є демонстраційним зразком форми обліку прототипу EcoFly.
         </div>
 
         <div class="stamp-box">
-          <div class="stamp-title">EcoFly Pilot Lab</div>
-          <div class="stamp-sub">ВЕРИФІКОВАНО ПАРТІЮ</div>
+          <div class="stamp-title">ЗРАЗОК ДОКУМЕНТА</div>
+          <div class="stamp-sub">ECOFLY PROTOTYPE</div>
           <div class="stamp-sub">м. Київ • 2026</div>
         </div>
       </div>

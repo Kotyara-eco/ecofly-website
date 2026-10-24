@@ -269,16 +269,17 @@ button {
   .main-nav {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.15rem;
   }
 
   .nav-link {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     font-weight: 500;
     color: var(--text-secondary);
     position: relative;
     padding: 0.4rem 0.2rem;
     transition: color 0.15s ease;
+    white-space: nowrap;
   }
 
   .nav-link:hover, .nav-link.active {
