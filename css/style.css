@@ -2189,3 +2189,948 @@ details[open] .details-summary::before {
     display: none !important;
   }
 }
+
+
+/* ==========================================================================
+   14. Visual & Structural Refinements (Banners, Alternating Triads, Scales,
+       Comparison Bars, Passport Document, Tile Map, Risk Cards, Timeline,
+       Founder Avatar, Sticky Mobile CTA)
+   ========================================================================== */
+
+/* 1. Wide Section Photo-Banners (240–320 px height, dark gradient, light text) */
+.section-header.section-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 240px;
+  padding: 2rem 2.25rem;
+  margin-bottom: 2.75rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(94, 202, 149, 0.25);
+  background-color: #0D1611;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .section-header.section-banner {
+    min-height: 260px;
+    max-height: 320px;
+    padding: 2.5rem 3rem;
+  }
+}
+
+.section-header.section-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, rgba(13, 22, 17, 0.94) 0%, rgba(16, 29, 22, 0.88) 55%, rgba(13, 22, 17, 0.76) 100%);
+}
+
+.section-banner.b-how,
+.section-banner.b-calc,
+.section-banner.b-risks,
+.section-banner.b-faq {
+  background-image: url('../assets/photos/hero-fly.webp');
+}
+
+.section-banner.b-photos,
+.section-banner.b-passport,
+.section-banner.b-timeline {
+  background-image: url('../assets/photos/adult-fly.webp');
+}
+
+.section-banner.b-waste {
+  background-image: url('../assets/photos/food-waste.jpg');
+}
+
+.section-banner.b-buyers {
+  background-image: url('../assets/photos/poultry.jpg');
+}
+
+.section-banner.b-impact {
+  background-image: url('../assets/photos/soil-garden.jpg');
+}
+
+.section-banner.b-team,
+.section-banner.b-contact {
+  background-image: url('../assets/photos/kyiv.jpg');
+}
+
+.section-header.section-banner .section-badge {
+  align-self: flex-start;
+  background-color: rgba(94, 202, 149, 0.16);
+  color: #5ECA95;
+  border-color: rgba(94, 202, 149, 0.4);
+}
+
+.section-header.section-banner .section-title {
+  color: #FFFFFF;
+  max-width: 780px;
+}
+
+.section-header.section-banner .section-desc {
+  color: #D5E0D8;
+  max-width: 720px;
+}
+
+/* 1b. Alternating «Photo + 3 Points» Blocks (.photo-triad-block) */
+.photo-triad-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  align-items: stretch;
+}
+
+@media (min-width: 992px) {
+  .photo-triad-block.photo-left {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+  .photo-triad-block.photo-right {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+
+.photo-triad-media {
+  position: relative;
+  min-height: 260px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-triad-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.photo-triad-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: space-between;
+}
+
+.triad-point-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--brand-forest);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.triad-point-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent-amber);
+  margin-bottom: 0.35rem;
+}
+
+.triad-point-text {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 2. «How It Works» Connected 01–04 Scale (Horizontal Desktop / Vertical Mobile) */
+.steps-timeline {
+  position: relative;
+}
+
+/* Mobile vertical connecting line */
+@media (max-width: 1023px) {
+  .steps-timeline {
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--brand-forest);
+  }
+}
+
+/* Desktop horizontal connecting line */
+@media (min-width: 1024px) {
+  .steps-timeline::before {
+    content: "";
+    position: absolute;
+    top: 2.3rem;
+    left: 6%;
+    right: 6%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-forest), var(--accent-amber));
+    z-index: 0;
+  }
+}
+
+.steps-timeline .step-card {
+  z-index: 1;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  background-color: var(--brand-pine);
+  color: #FFFFFF;
+  border: 2px solid var(--brand-forest);
+  margin-bottom: 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 3. Comparison Bars (Soy vs Fishmeal vs EcoFly BSF) */
+.cmp-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.cmp-note {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.cmp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cmp-row {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+}
+
+.cmp-crit {
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.cmp-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.cmp-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface-elevated);
+}
+
+@media (min-width: 640px) {
+  .cmp-item {
+    grid-template-columns: 200px 140px 1fr;
+    gap: 1rem;
+  }
+}
+
+.cmp-item.bsf {
+  border: 1px solid var(--brand-forest);
+  background-color: var(--brand-light);
+}
+
+.cmp-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.cmp-meter {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 120px;
+}
+
+.cmp-meter i {
+  display: block;
+  height: 10px;
+  border-radius: 3px;
+  background-color: var(--border-subtle);
+  border: 1px solid var(--border-strong);
+}
+
+.cmp-meter i.on {
+  background-color: var(--brand-forest);
+  border-color: var(--brand-forest);
+}
+
+.cmp-meter.hyp i.on {
+  background-color: var(--accent-amber);
+  border: 1px dashed var(--accent-amber);
+}
+
+.cmp-val {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* 4. Calculator Input Echo & Visual Before → After Bar */
+.calc-results-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.calc-in {
+  margin-top: 0.5rem;
+  padding-top: 0.45rem;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.calc-bars {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.35rem;
+}
+
+.calc-bars-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+
+.calc-bar-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 110px;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.calc-bar-lbl {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.calc-bar {
+  position: relative;
+  height: 16px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.calc-bar-fill.before {
+  height: 100%;
+  background-color: var(--text-muted);
+}
+
+.calc-bar-fill.after {
+  height: 100%;
+  background-color: var(--brand-forest);
+}
+
+.calc-bar-range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(94, 202, 149, 0.45),
+    rgba(94, 202, 149, 0.45) 5px,
+    rgba(94, 202, 149, 0.15) 5px,
+    rgba(94, 202, 149, 0.15) 10px
+  );
+  border-right: 2px dashed var(--brand-forest);
+}
+
+.calc-bar-val {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.calc-bars-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0.35rem 0 0;
+}
+
+/* 5. Batch Passport Document Frame & Stamp */
+.passport-doc {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--brand-forest);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.pd-stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber);
+  background-color: var(--accent-amber-bg);
+  border: 2px dashed var(--accent-amber);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.pd-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.pd-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.pd-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 0.2rem;
+}
+
+.pd-id {
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+}
+
+.pd-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .pd-fields {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pd-row {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+}
+
+.pd-row dt {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.pd-row dd {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.pd-result {
+  background-color: var(--bg-surface-elevated);
+  border: 1px dashed var(--brand-forest);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.15rem;
+}
+
+.pd-result-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.pd-foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  font-weight: 600;
+}
+
+.pd-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+/* 6. Kyiv District Schematic Tile Map (.district-map) */
+.district-chip-grid.district-map {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0.85rem;
+  background: linear-gradient(90deg, var(--bg-surface) 0%, var(--bg-surface) 56%, rgba(45, 106, 79, 0.14) 58%, var(--bg-surface) 60%, var(--bg-surface) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 540px) {
+  .district-chip-grid.district-map {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "obo pod des"
+      "svi she dni"
+      "sol pec dar"
+      "hol hol dar";
+  }
+  .district-map .district-chip[data-id="obolonskyi"] { grid-area: obo; }
+  .district-map .district-chip[data-id="podilskyi"] { grid-area: pod; }
+  .district-map .district-chip[data-id="desnianskyi"] { grid-area: des; }
+  .district-map .district-chip[data-id="sviatoshynskyi"] { grid-area: svi; }
+  .district-map .district-chip[data-id="shevchenkivskyi"] { grid-area: she; }
+  .district-map .district-chip[data-id="dniprovskyi"] { grid-area: dni; }
+  .district-map .district-chip[data-id="solomianskyi"] { grid-area: sol; }
+  .district-map .district-chip[data-id="pecherskyi"] { grid-area: pec; }
+  .district-map .district-chip[data-id="darnytskyi"] { grid-area: dar; }
+  .district-map .district-chip[data-id="holosiivskyi"] { grid-area: hol; }
+}
+
+.district-map .district-chip {
+  text-align: center;
+  justify-content: center;
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+/* 7a. Risk Cards with Colored Level Tags & «Як знімаємо» Block */
+.risk-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .risk-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.risk-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left-width: 5px;
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.risk-card.low { border-left-color: var(--status-green); }
+.risk-card.medium { border-left-color: var(--accent-amber); }
+.risk-card.high { border-left-color: #C93B2B; }
+
+.risk-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.risk-title {
+  font-family: var(--font-heading);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.risk-level {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.risk-level.low {
+  background-color: var(--status-green-bg);
+  color: var(--status-green);
+}
+
+.risk-level.medium {
+  background-color: var(--accent-amber-bg);
+  color: var(--accent-amber);
+}
+
+.risk-level.high {
+  background-color: rgba(201, 59, 43, 0.14);
+  color: #E05A47;
+}
+
+[data-theme="light"] .risk-level.high {
+  color: #A62618;
+}
+
+.risk-status {
+  margin-bottom: 0.75rem;
+}
+
+.risk-fix {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.95rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.risk-goal {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* 7b. Vertical Timeline with Icons & Status Tags */
+.vtimeline {
+  list-style: none;
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0.5rem 0 0.5rem 2.75rem;
+}
+
+.vtimeline::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 1.05rem;
+  width: 3px;
+  background-color: var(--border-strong);
+}
+
+.vt-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.vt-item:last-child {
+  margin-bottom: 0;
+}
+
+.vt-icon {
+  position: absolute;
+  left: -2.75rem;
+  top: 0.25rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--brand-forest);
+  color: var(--brand-forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.vt-item.done .vt-icon {
+  background-color: var(--status-green-bg);
+  border-color: var(--status-green);
+  color: var(--status-green);
+}
+
+.vt-item.progress .vt-icon {
+  background-color: var(--accent-amber-bg);
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+}
+
+.vt-body {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.vt-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+}
+
+.vt-tag.done {
+  background-color: var(--status-green-bg);
+  color: var(--status-green);
+}
+
+.vt-tag.progress {
+  background-color: var(--accent-amber-bg);
+  color: var(--accent-amber);
+}
+
+.vt-tag.planned {
+  background-color: var(--status-blue-bg);
+  color: var(--status-blue);
+}
+
+.vt-title {
+  font-family: var(--font-heading);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.35rem;
+}
+
+.vt-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.35rem;
+}
+
+.vt-result {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* 8. Founder Circular Photo Slot */
+.team-photo {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  background-color: var(--bg-surface-elevated);
+  border: 2px solid var(--brand-forest);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.team-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.team-photo-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.25;
+}
+
+/* 9. Big Figures Strip in Impact Section & After-Application 3 Steps */
+.big-figures {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .big-figures {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.big-fig {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem;
+  text-align: center;
+}
+
+.big-fig-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-forest);
+  line-height: 1.15;
+  margin-bottom: 0.3rem;
+}
+
+.big-fig-lbl {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.big-fig-src {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.after-apply-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.after-apply-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.after-apply-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .after-apply-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.after-step {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.after-step-num {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+}
+
+.after-step-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.after-step-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 10. Mobile Sticky Bottom CTA Bar */
+.mobile-sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 950;
+  padding: 0.65rem 1rem;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-strong);
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-sticky-btn {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-sticky-cta {
+    display: none;
+  }
+}

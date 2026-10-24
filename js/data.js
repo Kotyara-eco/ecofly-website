@@ -120,7 +120,7 @@ const ECOFLY_DATA = {
     "cycle.title": "How the closed loop works",
     "cycle.desc": "Clean food and agricultural residues are converted into biological resources within 12–14 days.",
     "cycle.step1_title": "1. Scheduled Collection",
-    "cycle.step1_desc": "Collection of wet plant residues directly from breweries, juice processors, bakeries, and HoReCa kitchens on an agreed schedule.",
+    "cycle.step1_desc": "Collection of wet plant residues from breweries, juice processors, bakeries, and plant-based kitchen trimmings on an agreed schedule.",
     "cycle.step1_metric": "From ~20 kg/day stable flow",
     "cycle.step2_title": "2. Larvae Bioconversion",
     "cycle.step2_desc": "BSF larvae consume the substrate, reducing dry mass by 60–85% and significantly reducing methane formation.",
@@ -129,7 +129,7 @@ const ECOFLY_DATA = {
     "cycle.step3_desc": "Prepupae are separated into protein fraction and technical lipids, leaving stabilized organic insect frass.",
     "cycle.step3_metric": "15–20% live biomass yield",
     "cycle.step4_title": "4. Return to Economy",
-    "cycle.step4_desc": "Protein enriches poultry/fish nutrition, while zoohumus returns nutrients to urban community gardens and local farms.",
+    "cycle.step4_desc": "Products may return to feed and soil; the effect is to be tested on the prototype.",
     "cycle.step4_metric": "Goal: closed loop",
 
     // Застереження
@@ -140,20 +140,20 @@ const ECOFLY_DATA = {
     // Для відходів
     "waste.badge": "For food manufacturers & HoReCa",
     "waste.title": "Organic waste management without odor or extra disposal fees",
-    "waste.lead": "We help food manufacturers, juice/kvass makers, and kitchens turn wet residues into an ESG asset with verified recycling documentation.",
+    "waste.lead": "We help food manufacturers, juice/kvass makers, and kitchens turn wet plant residues into a documented recycling flow (sample document).",
     "waste.p1_title": "Regular collection & clean containers",
     "waste.p1_desc": "Sealed returnable containers prevent fermentation odors and insect accumulation on your premises.",
     "waste.p2_title": "Sample batch passport for ESG",
-    "waste.p2_desc": "Traceability document recording transferred volume and confirming bioconversion instead of municipal landfilling.",
-    "waste.p3_title": "Social impact for Kyiv",
-    "waste.p3_desc": "Option to donate a share of the resulting organic zoohumus to Kyiv public schools, educational nature centers, and community gardens.",
+    "waste.p2_desc": "Sample batch passport recording mass and substrate type instead of landfilling.",
+    "waste.p3_title": "Plans for the city",
+    "waste.p3_desc": "We plan to pass part of the zoohumus to urban gardens; terms are discussed individually.",
     "waste.form_title": "Submit waste collection request",
-    "waste.form_desc": "Tell us about your organic residues. We will respond within 24 hours.",
+    "waste.form_desc": "Tell us about your organic residues. We will get back to you.",
     "waste.lbl_type": "Type of organic waste *",
     "waste.opt_type_brewer": "Spent grain / brewery malt",
     "waste.opt_type_juice": "Fruit / vegetable pomace (juice, kvass)",
     "waste.opt_type_bakery": "Bakery residues / flour by-products",
-    "waste.opt_type_kitchen": "Vegetable trimmings from kitchens (pre-consumer HoReCa)",
+    "waste.opt_type_kitchen": "Plant-based kitchen trimmings (no meat or fish)",
     "waste.lbl_volume": "Estimated daily volume *",
     "waste.lbl_freq": "Preferred collection frequency *",
     "waste.opt_freq_daily": "Daily (7 days/week)",
@@ -163,7 +163,7 @@ const ECOFLY_DATA = {
     "waste.lbl_contact_name": "Contact person & company *",
     "waste.lbl_phone": "Phone or Telegram *",
     "waste.chk_esg": "Require batch recycling documentation for sustainability reporting",
-    "waste.chk_donate": "Donate part of zoohumus to Kyiv schools & community gardens",
+    "waste.chk_donate": "Interested in the planned handover of zoohumus to urban gardens (terms discussed individually)",
     "waste.chk_consent": "I consent to personal data processing in accordance with the Privacy Notice *",
     "waste.btn_submit": "Submit collection request",
     "waste.btn_copy": "Copy application data",
@@ -173,13 +173,13 @@ const ECOFLY_DATA = {
     "buyers.title": "Alternative protein, insect lipids & zoohumus",
     "buyers.lead": "A domestic protein source with lower import dependency and controlled cultivation parameters.",
     "buyers.prod1_title": "BSF Larvae Protein",
-    "buyers.prod1_desc": "Rich in essential amino acids and lauric acid (Spranghers et al., 2017). Suitable for aquaculture and poultry nutrition trials.",
+    "buyers.prod1_desc": "Contains essential amino acids (Spranghers et al., 2017). Composition of our own product will be determined in prototype tests.",
     "buyers.prod1_val": "Lab analysis: data under evaluation from prototype testing",
     "buyers.prod2_title": "Larval Lipids (Fat)",
-    "buyers.prod2_desc": "High concentration of medium-chain fatty acids (MCFA) beneficial for animal gut microflora.",
+    "buyers.prod2_desc": "Larval fat contains medium-chain fatty acids (MCFA); composition of our product is to be determined.",
     "buyers.prod2_val": "Lipid profile: data under evaluation from prototype testing",
     "buyers.prod3_title": "Zoohumus (BSF Frass)",
-    "buyers.prod3_desc": "Natural biofertilizer containing chitin that stimulates plant defense mechanisms and soil microbiology.",
+    "buyers.prod3_desc": "By-product of processing (residual substrate and larval excrement); parameters are to be determined.",
     "buyers.prod3_val": "NPK & organic matter: data under evaluation from prototype testing",
 
     // Таблиця
@@ -232,12 +232,36 @@ const ECOFLY_DATA = {
     "calc.res2_sub": "Reduces anaerobic methane formation",
     "calc.res3_title": "Estimated cultivator area",
     "calc.res3_sub": "31.25 kg substrate per m² per day (Eawag/Sandec)",
+    "calc.in_lbl": "Input:",
+    "calc.bars_title": "Substrate dry mass: before → after",
+    "calc.bar_before": "Before",
+    "calc.bar_after": "After",
+    "calc.bars_note": "Dry mass reduction of 60–85% (Eawag/Sandec) leaves 15–40%. This is a reference range, not a guarantee.",
     "calc.disclaimer": "* Indicative calculation, not a guaranteed result. Actual output depends on moisture, nutrient profile of substrate, and climate control stability.",
+
+    // Порівняння (смужки)
+    "cmp.title": "Comparison with soybean meal and fishmeal",
+    "cmp.note": "Qualitative assessment by the project author, not measured data. Longer bar = higher level on the criterion. Dashed = hypothesis under verification.",
+    "cmp.soy": "Soybean meal",
+    "cmp.fish": "Fishmeal",
+    "cmp.bsf": "EcoFly BSF protein",
+    "cmp.c1": "Import dependency",
+    "cmp.c1_soy": "High",
+    "cmp.c1_fish": "High",
+    "cmp.c1_bsf": "Lower (local production)",
+    "cmp.c2": "Composition stability",
+    "cmp.c2_soy": "Medium",
+    "cmp.c2_fish": "Medium",
+    "cmp.c2_bsf": "Expected higher — testing",
+    "cmp.c3": "Certification in Ukraine",
+    "cmp.c3_soy": "Standard registration available",
+    "cmp.c3_fish": "Veterinary control rules apply",
+    "cmp.c3_bsf": "Feed status of larvae is being clarified",
 
     // Паспорт
     "passport.badge": "Traceability & ESG reporting",
     "passport.title": "Sample Batch Recycling Passport",
-    "passport.desc": "Every batch receives a code formatted as ECO-YYYY-MMDD-XXXX and a sample documentation record for corporate sustainability reporting.",
+    "passport.desc": "Each batch gets a code formatted as ECO-YYYY-MMDD-XXXX and a sample record (all data in the specimen are fictional).",
     "passport.sample_watermark": "SAMPLE SPECIMEN",
     "passport.doc_title": "BSF BIOCONVERSION BATCH PASSPORT (SPECIMEN)",
     "passport.batch_id_lbl": "Batch Identification Code:",
@@ -248,7 +272,7 @@ const ECOFLY_DATA = {
     "passport.district_lbl": "Collection District:",
     "passport.date_in_lbl": "Intake Date:",
     "passport.date_out_lbl": "Completion Date:",
-    "passport.output_lbl": "Confirmed bioconversion outcome (specimen):",
+    "passport.output_lbl": "Sample bioconversion result (fictional data):",
     "passport.sign_lbl": "EcoFly Prototype Testing Setup",
     "passport.btn_open": "Open sample passport document",
     "passport.btn_print": "Print investor summary",
@@ -320,7 +344,7 @@ const ECOFLY_DATA = {
 
     // Футер
     "footer.rights": "EcoFly. Circular bioeconomy prototype project in Kyiv.",
-    "footer.privacy_notice": "Privacy Notice: Contact details submitted via forms are used solely for direct communication regarding prototype testing and feed protein samples. Data is never shared with third parties.",
+    "footer.privacy_notice": "Privacy note: data is used only to contact you and may be processed in Google Forms services.",
     "footer.back_to_top": "Back to top",
 
     // Сповіщення
@@ -338,7 +362,7 @@ const ECOFLY_DATA = {
       ua_q: "Які саме відходи ви приймаєте?",
       ua_a: "Ми приймаємо чисті вологі рослинні залишки: пивну дробину, макуху та вичавки з виробництва соків і квасу, хлібні обрізки, а також рослинні залишки з кухонь (pre-consumer HoReCa). Ми не приймаємо м'ясо, рибу, гній чи зіпсовані продукти з цвіллю згідно з вимогами європейського Регламенту 2017/893 до кормових субстратів.",
       en_q: "What types of organic waste do you accept?",
-      en_a: "We accept clean, wet plant-based residues: brewer's spent grain, fruit and vegetable pomace from juice/kvass production, bakery trimmings, and pre-consumer vegetable kitchen trimmings. We do not accept meat, fish, manure, or moldy waste in compliance with EU Regulation 2017/893 regarding insect feed substrates."
+      en_a: "We accept clean, wet plant-based residues: brewer's spent grain, fruit and vegetable pomace from juice/kvass production, bakery trimmings, and plant-based kitchen trimmings (no meat or fish). We do not accept meat, fish, manure, or moldy waste in compliance with EU Regulation 2017/893 regarding insect feed substrates."
     },
     {
       id: "faq-2",
@@ -371,9 +395,9 @@ const ECOFLY_DATA = {
     {
       id: "faq-6",
       ua_q: "Скільки коштує забір для постачальника відходів?",
-      ua_a: "На стадії прототипу ми тестуємо умови співпраці: безоплатний забір за умови стабільного відсортованого обсягу від ~20 кг/день, або домовленість із наданням частини готового органічного добрива та зразка паспорта переробки для звітності.",
+      ua_a: "На стадії прототипу умови співпраці обговорюємо індивідуально; зразок паспорта партії для звітності надаємо.",
       en_q: "How much does collection cost for the waste supplier?",
-      en_a: "At the prototype stage, we test collaboration terms: zero-fee collection for stable sorted streams of ~20+ kg/day, or mutual arrangements with organic zoohumus return and sample batch recycling documentation."
+      en_a: "At the prototype stage, terms are discussed individually; a sample batch recycling document can be provided."
     },
     {
       id: "faq-7",

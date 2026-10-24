@@ -285,6 +285,16 @@ document.addEventListener('DOMContentLoaded', () => {
     calcResLarvae.textContent = `${larvaeMin.toLocaleString()} – ${larvaeMax.toLocaleString()} ${kgWord}`;
     calcResLandfill.textContent = `${landfillTons} ${tonWord}`;
     calcResArea.textContent = `~${areaM2} ${m2Word}`;
+
+    // Вхідне значення поруч із кожним результатом (кг/добу) та підпис шкали «було → стало»
+    const perDay = currentLang === 'en' ? 'kg/day' : 'кг/добу';
+    document.querySelectorAll('.js-calc-in').forEach(el => {
+      el.textContent = `${kgPerDay.toLocaleString()} ${perDay}`;
+    });
+    const beforeLbl = document.getElementById('calc-bar-before-lbl');
+    if (beforeLbl) {
+      beforeLbl.textContent = `${monthlyTotalKg.toLocaleString()} ${kgWord}/${currentLang === 'en' ? 'month' : 'міс'}`;
+    }
   }
 
   if (calcKgSlider && calcKgInput) {
