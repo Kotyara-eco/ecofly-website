@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" fill="none">
+  <!-- Subtle dark background -->
+  <rect width="600" height="400" rx="12" fill="#14231A"/>
+  <rect width="600" height="400" rx="12" stroke="#2D6A4F" stroke-width="2"/>
+
+  <!-- Biological plant leaf resting backdrop -->
+  <path d="M 60 380 Q 250 160 540 280 Q 340 380 60 380 Z" fill="#1B3828" opacity="0.6"/>
+  <path d="M 60 380 Q 280 250 540 280" stroke="#2D6A4F" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+
+  <!-- Adult Hermetia illucens (Top-down dorsal view) -->
+  <g transform="translate(300, 220)">
+    <!-- Wings (Smoky translucent folded back) -->
+    <!-- Left wing -->
+    <path d="M -8 -30 C -45 -5 -40 85 -5 105 C -2 105 -5 30 -5 -25 Z" fill="#2A4838" stroke="#5ECA95" stroke-width="1.8" opacity="0.85"/>
+    <path d="M -8 -15 Q -25 35 -15 85" stroke="#74D4A7" stroke-width="1.2" opacity="0.6"/>
+    <!-- Right wing -->
+    <path d="M 8 -30 C 45 -5 40 85 5 105 C 2 105 5 30 5 -25 Z" fill="#2A4838" stroke="#5ECA95" stroke-width="1.8" opacity="0.85"/>
+    <path d="M 8 -15 Q 25 35 15 85" stroke="#74D4A7" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Slender wasp-mimicking abdomen -->
+    <!-- Translucent basal abdominal windows (characteristic of BSF) -->
+    <ellipse cx="0" cy="5" rx="14" ry="16" fill="#1E382B" stroke="#48B07D" stroke-width="2"/>
+    <ellipse cx="-6" cy="5" rx="4" ry="7" fill="#74D4A7" opacity="0.4"/>
+    <ellipse cx="6" cy="5" rx="4" ry="7" fill="#74D4A7" opacity="0.4"/>
+
+    <!-- Posterior abdomen segments -->
+    <path d="M -14 15 C -15 45 -10 80 0 95 C 10 80 15 45 14 15 Z" fill="#14281E" stroke="#5ECA95" stroke-width="2"/>
+    <line x1="-13" y1="35" x2="13" y2="35" stroke="#48B07D" stroke-width="1.5"/>
+    <line x1="-11" y1="55" x2="11" y2="55" stroke="#48B07D" stroke-width="1.5"/>
+    <line x1="-8" y1="75" x2="8" y2="75" stroke="#48B07D" stroke-width="1.5"/>
+
+    <!-- Thorax -->
+    <ellipse cx="0" cy="-28" rx="18" ry="22" fill="#182E22" stroke="#5ECA95" stroke-width="2"/>
+
+    <!-- Head & Large Compound Eyes -->
+    <circle cx="0" cy="-56" r="14" fill="#0E1E16" stroke="#5ECA95" stroke-width="2"/>
+    <!-- Left compound eye -->
+    <ellipse cx="-9" cy="-57" rx="6" ry="9" fill="#2D6A4F" stroke="#74D4A7" stroke-width="1.2"/>
+    <!-- Right compound eye -->
+    <ellipse cx="9" cy="-57" rx="6" ry="9" fill="#2D6A4F" stroke="#74D4A7" stroke-width="1.2"/>
+
+    <!-- Elongated BSF Antennae -->
+    <path d="M -5 -66 Q -14 -85 -24 -95" stroke="#74D4A7" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 5 -66 Q 14 -85 24 -95" stroke="#74D4A7" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Legs with White/Pale Tarsi (hallmark of Hermetia illucens) -->
+    <!-- Forelegs -->
+    <path d="M -12 -38 Q -50 -55 -65 -35 L -80 -25" stroke="#3D5E4A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-80" cy="-25" r="3" fill="#EDF4EF"/>
+    <path d="M 12 -38 Q 50 -55 65 -35 L 80 -25" stroke="#3D5E4A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="80" cy="-25" r="3" fill="#EDF4EF"/>
+
+    <!-- Midlegs -->
+    <path d="M -16 -24 Q -70 -10 -85 20 L -95 40" stroke="#3D5E4A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-95" cy="40" r="3" fill="#EDF4EF"/>
+    <path d="M 16 -24 Q 70 -10 85 20 L 95 40" stroke="#3D5E4A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="95" cy="40" r="3" fill="#EDF4EF"/>
+
+    <!-- Hindlegs (Longer) -->
+    <path d="M -14 5 Q -75 40 -80 85 L -90 120" stroke="#3D5E4A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-90" cy="120" r="3" fill="#EDF4EF"/>
+    <path d="M 14 5 Q 75 40 80 85 L 90 120" stroke="#3D5E4A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="90" cy="120" r="3" fill="#EDF4EF"/>
+  </g>
+
+  <!-- Badge in top right corner -->
+  <rect x="370" y="24" width="205" height="30" rx="6" fill="#1C3024" stroke="#3A5745" stroke-width="1"/>
+  <text x="472" y="43" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#74D4A7">ІМАГО (ДОРОСЛА МУХА)</text>
+
+  <text x="40" y="55" font-family="'Manrope', sans-serif" font-size="18" font-weight="700" fill="#EEF5F0">Чорна левова муха</text>
+  <text x="40" y="80" font-family="'Golos Text', sans-serif" font-size="13" fill="#A6BCAD">Не має ротового апарату, живе 4–8 діб, не є шкідником</text>
+</svg>

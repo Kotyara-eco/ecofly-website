@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <radialGradient id="heroDarkGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#14231A"/>
+      <stop offset="60%" stop-color="#0D1611"/>
+      <stop offset="100%" stop-color="#070D0A"/>
+    </radialGradient>
+    <linearGradient id="larvaGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D5A45"/>
+      <stop offset="50%" stop-color="#2D4836"/>
+      <stop offset="100%" stop-color="#1C3024"/>
+    </linearGradient>
+    <linearGradient id="larvaGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#486D53"/>
+      <stop offset="70%" stop-color="#2D4836"/>
+      <stop offset="100%" stop-color="#182A1F"/>
+    </linearGradient>
+    <radialGradient id="amberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F4A236" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#9A5B00" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tealGlow" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#5ECA95" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2D6A4F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Deep dark base -->
+  <rect width="1920" height="1080" fill="url(#heroDarkGrad)"/>
+
+  <!-- Organic depth layers -->
+  <circle cx="1400" cy="400" r="600" fill="url(#amberGlow)"/>
+  <circle cx="500" cy="700" r="700" fill="url(#tealGlow)"/>
+
+  <!-- Substrate bed textures -->
+  <path d="M 0 650 Q 400 580 900 680 T 1920 620 L 1920 1080 L 0 1080 Z" fill="#121D16" opacity="0.9"/>
+  <path d="M 0 780 Q 550 710 1100 810 T 1920 760 L 1920 1080 L 0 1080 Z" fill="#16261D" opacity="0.75"/>
+  <path d="M 0 890 Q 600 820 1300 910 T 1920 870 L 1920 1080 L 0 1080 Z" fill="#1A2D23" opacity="0.6"/>
+
+  <!-- Substrate particles & brewer grain / malt residues -->
+  <circle cx="350" cy="740" r="14" fill="#9A5B00" opacity="0.25"/>
+  <circle cx="520" cy="820" r="18" fill="#F4A236" opacity="0.2"/>
+  <circle cx="880" cy="710" r="12" fill="#5ECA95" opacity="0.18"/>
+  <circle cx="1120" cy="850" r="22" fill="#9A5B00" opacity="0.22"/>
+  <circle cx="1450" cy="760" r="16" fill="#F4A236" opacity="0.2"/>
+  <circle cx="1680" cy="890" r="25" fill="#3D5A45" opacity="0.3"/>
+
+  <!-- Macro BSF Larvae (Hermetia illucens) Group in Right & Center field -->
+  <!-- Larva Alpha (Foreground Center-Right) -->
+  <g transform="translate(1320, 560) rotate(-22) scale(1.6)">
+    <ellipse cx="0" cy="0" rx="140" ry="42" fill="url(#larvaGrad1)" stroke="#5ECA95" stroke-width="2.5" stroke-opacity="0.85"/>
+    <!-- Segments -->
+    <path d="M -95 -32 Q -88 0 -95 32" stroke="#74D4A7" stroke-width="3" stroke-opacity="0.7"/>
+    <path d="M -65 -38 Q -58 0 -65 38" stroke="#74D4A7" stroke-width="3" stroke-opacity="0.7"/>
+    <path d="M -35 -41 Q -28 0 -35 41" stroke="#74D4A7" stroke-width="3.2" stroke-opacity="0.75"/>
+    <path d="M -5 -42 Q 2 0 -5 42" stroke="#74D4A7" stroke-width="3.2" stroke-opacity="0.75"/>
+    <path d="M 25 -41 Q 32 0 25 41" stroke="#74D4A7" stroke-width="3.2" stroke-opacity="0.75"/>
+    <path d="M 55 -38 Q 62 0 55 38" stroke="#74D4A7" stroke-width="3" stroke-opacity="0.7"/>
+    <path d="M 85 -33 Q 92 0 85 33" stroke="#74D4A7" stroke-width="2.8" stroke-opacity="0.7"/>
+    <path d="M 115 -24 Q 120 0 115 24" stroke="#74D4A7" stroke-width="2.5" stroke-opacity="0.6"/>
+    <!-- Head segment -->
+    <path d="M 125 -18 C 150 -10 150 10 125 18 Z" fill="#1C3024" stroke="#5ECA95" stroke-width="2.5"/>
+  </g>
+
+  <!-- Larva Beta (Left-adjacent) -->
+  <g transform="translate(1080, 680) rotate(14) scale(1.35)">
+    <ellipse cx="0" cy="0" rx="130" ry="38" fill="url(#larvaGrad2)" stroke="#48B07D" stroke-width="2" stroke-opacity="0.8"/>
+    <path d="M -85 -28 Q -78 0 -85 28" stroke="#5ECA95" stroke-width="2.5" stroke-opacity="0.65"/>
+    <path d="M -55 -34 Q -48 0 -55 34" stroke="#5ECA95" stroke-width="2.5" stroke-opacity="0.65"/>
+    <path d="M -25 -37 Q -18 0 -25 37" stroke="#5ECA95" stroke-width="2.8" stroke-opacity="0.7"/>
+    <path d="M 5 -38 Q 12 0 5 38" stroke="#5ECA95" stroke-width="2.8" stroke-opacity="0.7"/>
+    <path d="M 35 -36 Q 42 0 35 36" stroke="#5ECA95" stroke-width="2.8" stroke-opacity="0.7"/>
+    <path d="M 65 -32 Q 72 0 65 32" stroke="#5ECA95" stroke-width="2.5" stroke-opacity="0.65"/>
+    <path d="M 95 -24 Q 100 0 95 24" stroke="#5ECA95" stroke-width="2.2" stroke-opacity="0.6"/>
+    <path d="M 115 -15 C 138 -8 138 8 115 15 Z" fill="#1C3024" stroke="#48B07D" stroke-width="2"/>
+  </g>
+
+  <!-- Larva Gamma (Lower Right) -->
+  <g transform="translate(1560, 750) rotate(-40) scale(1.2)">
+    <ellipse cx="0" cy="0" rx="120" ry="34" fill="url(#larvaGrad1)" stroke="#5ECA95" stroke-width="2" stroke-opacity="0.75"/>
+    <path d="M -75 -24 Q -70 0 -75 24" stroke="#74D4A7" stroke-width="2" stroke-opacity="0.6"/>
+    <path d="M -45 -30 Q -40 0 -45 30" stroke="#74D4A7" stroke-width="2.2" stroke-opacity="0.6"/>
+    <path d="M -15 -33 Q -10 0 -15 33" stroke="#74D4A7" stroke-width="2.4" stroke-opacity="0.65"/>
+    <path d="M 15 -33 Q 20 0 15 33" stroke="#74D4A7" stroke-width="2.4" stroke-opacity="0.65"/>
+    <path d="M 45 -30 Q 50 0 45 30" stroke="#74D4A7" stroke-width="2.2" stroke-opacity="0.6"/>
+    <path d="M 75 -24 Q 80 0 75 24" stroke="#74D4A7" stroke-width="2" stroke-opacity="0.6"/>
+    <path d="M 100 -12 C 120 -6 120 6 100 12 Z" fill="#182A1F" stroke="#5ECA95" stroke-width="1.8"/>
+  </g>
+
+  <!-- Larva Delta (Background feeding) -->
+  <g transform="translate(850, 610) rotate(-8) scale(0.95)" opacity="0.65">
+    <ellipse cx="0" cy="0" rx="110" ry="30" fill="#243C2C" stroke="#48B07D" stroke-width="1.5"/>
+    <path d="M -65 -20 Q -60 0 -65 20" stroke="#5ECA95" stroke-width="1.8"/>
+    <path d="M -35 -26 Q -30 0 -35 26" stroke="#5ECA95" stroke-width="1.8"/>
+    <path d="M -5 -29 Q 0 0 -5 29" stroke="#5ECA95" stroke-width="1.8"/>
+    <path d="M 25 -28 Q 30 0 25 28" stroke="#5ECA95" stroke-width="1.8"/>
+    <path d="M 55 -24 Q 60 0 55 24" stroke="#5ECA95" stroke-width="1.8"/>
+  </g>
+
+  <!-- Ambient light dust particles -->
+  <circle cx="1220" cy="460" r="3" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="1400" cy="380" r="2.5" fill="#5ECA95" opacity="0.5"/>
+  <circle cx="950" cy="520" r="3.5" fill="#F4A236" opacity="0.4"/>
+</svg>

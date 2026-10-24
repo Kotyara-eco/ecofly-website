@@ -473,9 +473,67 @@ button {
    4. Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding-top: 3.5rem;
   padding-bottom: 4rem;
-  background: radial-gradient(circle at 85% 15%, var(--brand-light) 0%, transparent 45%);
+  background-color: #0D1611; /* neutral dark fallback if the photo file is missing */
+}
+
+/* Full-width photo background + dark gradient overlay (text contrast >= 4.5:1) */
+.hero-bg-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.hero-bg-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 50%;
+  display: block;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(13, 22, 17, 0.94) 0%, rgba(13, 22, 17, 0.86) 55%, rgba(13, 22, 17, 0.78) 100%);
+}
+/* Hero text is always light: it sits on the dark overlay in both themes */
+.hero-section .hero-title,
+.hero-section .hero-badge,
+.hero-section .fact-val { color: #FFFFFF; }
+.hero-section .hero-lead,
+.hero-section .fact-lbl,
+.hero-section .fact-src { color: #D5E0D8; }
+.hero-photo-credit {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.5rem;
+  z-index: 1;
+  font-size: 0.72rem;
+  color: #D5E0D8;
+  background: rgba(13, 22, 17, 0.8);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.hero-photo-credit a { color: #FFFFFF; text-decoration: underline; }
+.hero-section .btn-outline { color: #FFFFFF; border-color: rgba(255, 255, 255, 0.55); }
+
+/* Neutral block shown where a photo file has not been added yet (no drawings) */
+.photo-pending {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-surface-elevated);
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .hero-grid {

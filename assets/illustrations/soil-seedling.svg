@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" fill="none">
+  <!-- Subtle dark container -->
+  <rect width="600" height="400" rx="12" fill="#14231A"/>
+  <rect width="600" height="400" rx="12" stroke="#2D6A4F" stroke-width="2"/>
+
+  <!-- Soil Layers -->
+  <path d="M 40 280 Q 200 260 360 275 T 560 265 L 560 370 L 40 370 Z" fill="#1B2E22" opacity="0.95"/>
+  <path d="M 40 310 Q 180 295 320 310 T 560 295 L 560 370 L 40 370 Z" fill="#15241B" opacity="0.9"/>
+
+  <!-- Granular Zoohumus / Frass Soil Particles & Structure -->
+  <g transform="translate(300, 315)">
+    <!-- Soil pellets and microbial active micro-zones -->
+    <ellipse cx="-180" cy="15" rx="14" ry="7" fill="#243C2D" stroke="#2D6A4F" stroke-width="1"/>
+    <ellipse cx="-120" cy="5" rx="16" ry="8" fill="#9A5B00" opacity="0.4"/>
+    <ellipse cx="-60" cy="20" rx="18" ry="9" fill="#243C2D" stroke="#2D6A4F" stroke-width="1"/>
+    <ellipse cx="0" cy="10" rx="22" ry="10" fill="#2D4A37"/>
+    <ellipse cx="70" cy="22" rx="17" ry="8" fill="#9A5B00" opacity="0.4"/>
+    <ellipse cx="140" cy="8" rx="19" ry="9" fill="#243C2D" stroke="#2D6A4F" stroke-width="1"/>
+    <ellipse cx="190" cy="18" rx="15" ry="7" fill="#2D4A37"/>
+  </g>
+
+  <!-- Sprouting Young Plant / Seedling -->
+  <g transform="translate(300, 270)">
+    <!-- Roots spreading in organic frass -->
+    <path d="M 0 0 Q -15 25 -35 45" stroke="#74D4A7" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <path d="M 0 5 Q 15 25 35 40" stroke="#74D4A7" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <path d="M 0 0 Q -5 35 -10 55" stroke="#74D4A7" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 0 5 Q 8 38 15 60" stroke="#74D4A7" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Green Stem -->
+    <path d="M 0 0 Q -5 -50 0 -100" stroke="#5ECA95" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- Left Cotyledon / Primary Leaf -->
+    <path d="M 0 -80 C -35 -85 -60 -115 -45 -140 C -25 -140 -5 -110 0 -85 Z" fill="#2E6348" stroke="#5ECA95" stroke-width="2.2"/>
+    <path d="M 0 -82 Q -25 -105 -40 -130" stroke="#74D4A7" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Right Cotyledon / Primary Leaf -->
+    <path d="M 0 -90 C 35 -95 65 -125 50 -150 C 30 -150 5 -120 0 -95 Z" fill="#3D7D5D" stroke="#74D4A7" stroke-width="2.2"/>
+    <path d="M 0 -92 Q 25 -115 45 -140" stroke="#A3E4C3" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Top Sprout Bud -->
+    <path d="M 0 -100 C -10 -120 10 -120 0 -135 C -5 -120 0 -105 0 -100 Z" fill="#5ECA95"/>
+  </g>
+
+  <!-- Sun Rays / Life Energy ambient lines -->
+  <path d="M 140 80 L 190 120" stroke="#F4A236" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 120 120 L 170 150" stroke="#F4A236" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 160 60 L 200 90" stroke="#F4A236" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Badge / Label -->
+  <rect x="30" y="30" width="200" height="32" rx="6" fill="#0D1611" stroke="#2D6A4F" stroke-width="1"/>
+  <text x="45" y="51" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#5ECA95">ЗООГУМУС · РОЗСАДА Й ҐРУНТ</text>
+</svg>

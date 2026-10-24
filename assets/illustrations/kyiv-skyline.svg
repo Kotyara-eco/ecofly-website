@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" fill="none">
+  <!-- Subtle dark container -->
+  <rect width="600" height="400" rx="12" fill="#14231A"/>
+  <rect width="600" height="400" rx="12" stroke="#2D6A4F" stroke-width="2"/>
+
+  <!-- Evening / Sunset Sky Gradient -->
+  <defs>
+    <linearGradient id="skyKyivGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14231A"/>
+      <stop offset="60%" stop-color="#1C3829"/>
+      <stop offset="100%" stop-color="#243C2E"/>
+    </linearGradient>
+    <linearGradient id="riverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#172F22"/>
+      <stop offset="100%" stop-color="#0E1B13"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="520" height="230" fill="url(#skyKyivGrad)" rx="8"/>
+
+  <!-- Distant Pechersk Hills Silhouette -->
+  <path d="M 40 220 Q 150 170 270 190 T 560 170 L 560 270 L 40 270 Z" fill="#13261C" opacity="0.9"/>
+
+  <!-- Kyiv Landmarks Silhouettes (Motherland Monument, Lavra Belltower, Bridges) -->
+  <!-- Lavra Great Bell Tower Silhouette -->
+  <g transform="translate(180, 185)">
+    <rect x="-8" y="-45" width="16" height="45" fill="#203E2D"/>
+    <rect x="-11" y="-52" width="22" height="8" fill="#203E2D"/>
+    <path d="M -9 -52 L 0 -68 L 9 -52 Z" fill="#F4A236" opacity="0.9"/>
+    <line x1="0" y1="-68" x2="0" y2="-75" stroke="#F4A236" stroke-width="1.5"/>
+  </g>
+
+  <!-- Motherland Monument Silhouette (Iconic Kyiv skyline profile) -->
+  <g transform="translate(260, 185)">
+    <!-- Pedestal -->
+    <polygon points="-12,0 12,0 8,-20 -8,-20" fill="#254A36"/>
+    <!-- Figure & Torso -->
+    <path d="M -6 -20 L -8 -60 L 8 -60 L 6 -20 Z" fill="#254A36"/>
+    <circle cx="0" cy="-64" r="5" fill="#254A36"/>
+    <!-- Left Hand with Shield -->
+    <path d="M -8 -50 L -25 -55" stroke="#254A36" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-28" cy="-56" rx="8" ry="14" fill="#2D5B42" stroke="#5ECA95" stroke-width="1"/>
+    <!-- Right Hand with Sword pointing up -->
+    <path d="M 8 -50 L 22 -60" stroke="#254A36" stroke-width="3" stroke-linecap="round"/>
+    <line x1="22" y1="-60" x2="26" y2="-92" stroke="#5ECA95" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="20" y1="-64" x2="26" y2="-62" stroke="#5ECA95" stroke-width="2"/>
+  </g>
+
+  <!-- Pivdennyi Bridge / Cable-Stayed Pylon Silhouette -->
+  <g transform="translate(420, 215)">
+    <!-- Concrete H-Pylon -->
+    <path d="M -8 0 L -4 -65 L 4 -65 L 8 0" stroke="#2D5841" stroke-width="3.5"/>
+    <line x1="-5" y1="-35" x2="5" y2="-35" stroke="#2D5841" stroke-width="2"/>
+    <!-- Stay Cables -->
+    <line x1="-4" y1="-60" x2="-60" y2="0" stroke="#5ECA95" stroke-width="1" opacity="0.6"/>
+    <line x1="-4" y1="-50" x2="-45" y2="0" stroke="#5ECA95" stroke-width="1" opacity="0.6"/>
+    <line x1="-4" y1="-40" x2="-30" y2="0" stroke="#5ECA95" stroke-width="1" opacity="0.6"/>
+    <line x1="4" y1="-60" x2="60" y2="0" stroke="#5ECA95" stroke-width="1" opacity="0.6"/>
+    <line x1="4" y1="-50" x2="45" y2="0" stroke="#5ECA95" stroke-width="1" opacity="0.6"/>
+    <line x1="4" y1="-40" x2="30" y2="0" stroke="#5ECA95" stroke-width="1" opacity="0.6"/>
+    <!-- Bridge Deck -->
+    <line x1="-90" y1="0" x2="90" y2="0" stroke="#3D7557" stroke-width="3"/>
+  </g>
+
+  <!-- Dnipro River Water Surface -->
+  <rect x="40" y="270" width="520" height="90" fill="url(#riverGrad)" rx="0 0 8 8"/>
+  <path d="M 40 285 Q 160 280 290 285 T 560 285" stroke="#5ECA95" stroke-width="1.2" stroke-dasharray="8 6" opacity="0.4"/>
+  <path d="M 40 310 Q 200 305 340 310 T 560 310" stroke="#5ECA95" stroke-width="1.2" stroke-dasharray="12 8" opacity="0.3"/>
+  <path d="M 40 335 Q 180 330 320 335 T 560 335" stroke="#F4A236" stroke-width="1.2" stroke-dasharray="10 10" opacity="0.25"/>
+
+  <!-- Badge / Label -->
+  <rect x="30" y="30" width="185" height="32" rx="6" fill="#0D1611" stroke="#2D6A4F" stroke-width="1"/>
+  <text x="45" y="51" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#5ECA95">КИЇВ · ЛОКАЦІЯ ПРОЄКТУ</text>
+</svg>
